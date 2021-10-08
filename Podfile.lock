@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (5.4.4)
+  - DropDown (2.3.13)
+  - SnapKit (5.0.1)
+  - Then (2.7.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.2)
+  - DropDown
+  - SnapKit (~> 5.0.0)
+  - Then
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - DropDown
+    - SnapKit
+    - Then
+
+SPEC CHECKSUMS:
+  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Then: acfe0be7e98221c6204e12f8161459606d5d822d
+
+PODFILE CHECKSUM: f47a87530201a1ddd3194986060f11b28cf077cc
+
+COCOAPODS: 1.11.0
