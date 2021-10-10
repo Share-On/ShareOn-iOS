@@ -83,6 +83,7 @@ class SignUpInfoViewController: UIViewController {
     private func configureUI(){
         view.backgroundColor = .white
         containerViewSetting()
+        keyboardTypeSetting()
         addView()
         cornerRadius()
         location()
