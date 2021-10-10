@@ -12,9 +12,16 @@ import Then
 class SignUpUserViewController: UIViewController {
     //MARK: - Properties
     
+    private let titleLabel = UILabel().then {
+        $0.text = "SignUp"
+        $0.dynamicFont(fontSize: 30, currentFontName: "AlfaSlabOne-Regular")
+        $0.textColor = .rgb(red: 159, green: 196, blue: 231)
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
     }
     
     //MARK: - Selectors
@@ -30,7 +37,7 @@ class SignUpUserViewController: UIViewController {
     // MARK: - Add View
     
     private func addView(){
-        
+        view.addSubview(titleLabel)
     }
     
     // MARK: - Corner Radius
@@ -42,7 +49,10 @@ class SignUpUserViewController: UIViewController {
     // MARK: - Location
     
     private func location(){
-        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(self.view.frame.height/5.07)
+            make.left.equalToSuperview().offset(self.view.frame.width/6.25)
+        }
     }
     
 }
