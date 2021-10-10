@@ -31,6 +31,12 @@ class LoginViewController: UIViewController {
         $0.addTarget(self, action: #selector(onTapEyeButton), for: .touchUpInside)
     }
     
+    private let forgotPasswordButton = UIButton().then {
+        $0.setTitle("비밀번호를 잊으셨나요?", for: .normal)
+        $0.dynamicFont(fontSize: 10, currentFontName: "AppleSDGothicNeo-Regular")
+        $0.setTitleColor(.rgb(red: 178, green: 178, blue: 178), for: .normal)
+    }
+    
     private let loginButton = UIButton().then {
         $0.setTitle("로그인", for: .normal)
         $0.setTitleColor(.white, for: .normal)
@@ -87,6 +93,7 @@ class LoginViewController: UIViewController {
         view.addSubview(idContainer)
         view.addSubview(passwordContainer)
         view.addSubview(showPasswordButton)
+        view.addSubview(forgotPasswordButton)
         view.addSubview(loginButton)
         view.addSubview(goSignUpButton)
     }
@@ -126,9 +133,16 @@ class LoginViewController: UIViewController {
             make.height.equalToSuperview().dividedBy(73.82)
         }
         
+        forgotPasswordButton.snp.makeConstraints { make in
+            make.left.equalTo(passwordContainer)
+            make.top.equalTo(passwordContainer.snp.bottom).offset(self.view.frame.height/90.22)
+            make.width.equalToSuperview().dividedBy(3.8)
+            make.height.equalToSuperview().dividedBy(67.67)
+        }
+        
         loginButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(passwordContainer.snp.bottom).offset(self.view.frame.height/45.11)
+            make.top.equalTo(passwordContainer.snp.bottom).offset(self.view.frame.height/8.83)
             make.width.equalToSuperview().dividedBy(1.45)
             make.height.equalToSuperview().dividedBy(19.80)
         }
