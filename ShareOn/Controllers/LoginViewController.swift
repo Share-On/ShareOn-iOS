@@ -100,13 +100,13 @@ class LoginViewController: UIViewController {
     
     private func location(){
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(self.view.frame.height/4.75)
+            make.top.equalToSuperview().offset(self.view.frame.height/5.07)
             make.left.equalToSuperview().offset(self.view.frame.width/6.25)
         }
         
         loginContainer.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(titleLabel.snp.bottom).offset(self.view.frame.height/15.04)
+            make.top.equalTo(titleLabel.snp.bottom).offset(self.view.frame.height/12.49)
             make.width.equalToSuperview().dividedBy(1.45)
             make.height.equalToSuperview().dividedBy(17.65)
         }
