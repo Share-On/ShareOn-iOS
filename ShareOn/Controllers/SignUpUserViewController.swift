@@ -29,6 +29,17 @@ class SignUpUserViewController: UIViewController {
         $0.backgroundColor = .rgb(red: 159, green: 196, blue: 231)
     }
     
+    private let passwordContainer = UserInfoPutContainerView().then{
+        $0.tfTitle.textColor = .rgb(red: 70, green: 150, blue: 225)
+        $0.tfTitle.text = "Password"
+        $0.tf.placeholder = "비밀번호를 입력해주세요."
+        $0.tf.isSecureTextEntry = true
+    }
+    
+    private let showPasswordButton = UIButton().then {
+        $0.setImage(UIImage(named: "ShareOn-eye"), for: .normal)
+        $0.addTarget(self, action: #selector(onTapEyeButton), for: .touchUpInside)
+    }
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +47,17 @@ class SignUpUserViewController: UIViewController {
     }
     
     //MARK: - Selectors
+    
+    @objc
+    private func onTapEyeButton(){
+        if passwordContainer.tf.isSecureTextEntry == true {
+            passwordContainer.tf.isSecureTextEntry = false
+            showPasswordButton.setImage(UIImage(named: "ShareOn-closedEye"), for: .normal)
+        } else {
+            passwordContainer.tf.isSecureTextEntry = true
+            showPasswordButton.setImage(UIImage(named: "ShareOn-eye"), for: .normal)
+        }
+    }
     
     //MARK: - Helpers
     private func configureUI(){
@@ -52,6 +74,8 @@ class SignUpUserViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(idContainer)
         view.addSubview(checkButton)
+        view.addSubview(passwordContainer)
+        view.addSubview(showPasswordButton)
     }
     
     // MARK: - Corner Radius
@@ -81,6 +105,20 @@ class SignUpUserViewController: UIViewController {
             make.width.equalToSuperview().dividedBy(7.5)
             make.height.equalToSuperview().dividedBy(50.75)
         }
+        
+        passwordContainer.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(idContainer.snp.bottom).offset(self.view.frame.height/29)
+            make.width.equalToSuperview().dividedBy(1.45)
+            make.height.equalToSuperview().dividedBy(17.65)
+        }
+        
+        showPasswordButton.snp.makeConstraints { make in
+            make.centerY.equalTo(passwordContainer.tf)
+            make.right.equalTo(passwordContainer.divView).inset(self.view.frame.width/187.5)
+            make.width.equalToSuperview().dividedBy(25)
+            make.height.equalToSuperview().dividedBy(73.82)
+        }
     }
     
     // MARK: - ContainerView Setting
@@ -91,6 +129,12 @@ class SignUpUserViewController: UIViewController {
         idContainer.addSubview(idContainer.divView)
         
         idContainer.tfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+        
+        passwordContainer.addSubview(passwordContainer.tfTitle)
+        passwordContainer.addSubview(passwordContainer.tf)
+        passwordContainer.addSubview(passwordContainer.divView)
+        
+        passwordContainer.tfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
     }
     
 }
