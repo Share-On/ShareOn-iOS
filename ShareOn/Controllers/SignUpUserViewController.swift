@@ -66,6 +66,13 @@ class SignUpUserViewController: UIViewController {
         $0.titleLabel?.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Bold")
     }
     
+    private let goLoginButton = UIButton().then {
+        $0.setTitle("이미 계정이 있으신가요?", for: .normal)
+        $0.setTitleColor(.rgb(red: 178, green: 178, blue: 178), for: .normal)
+        $0.titleLabel?.dynamicFont(fontSize: 12, currentFontName: "AppleSDGothicNeo-Bold")
+        $0.addTarget(self, action: #selector(onTapLogin), for: .touchUpInside)
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +103,18 @@ class SignUpUserViewController: UIViewController {
         }
     }
     
+    @objc
+    private func onTapNext(){
+        let controller = SignUpInfoViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc
+    private func onTapLogin(){
+        let controller = LoginViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     //MARK: - Helpers
     private func configureUI(){
         view.backgroundColor = .white
@@ -117,6 +136,7 @@ class SignUpUserViewController: UIViewController {
         view.addSubview(passwordCheckContainer)
         view.addSubview(showPasswordCheckButton)
         view.addSubview(nextButton)
+        view.addSubview(goLoginButton)
     }
     
     // MARK: - Corner Radius
@@ -164,7 +184,7 @@ class SignUpUserViewController: UIViewController {
         
         composeLabel.snp.makeConstraints { make in
             make.left.equalTo(passwordContainer)
-            make.top.equalTo(passwordContainer.snp.bottom).offset(self.view.frame.height/162.4)
+            make.top.equalTo(passwordContainer.snp.bottom).offset(self.view.frame.height/135.33)
         }
         
         passwordCheckContainer.snp.makeConstraints { make in
@@ -186,6 +206,13 @@ class SignUpUserViewController: UIViewController {
             make.top.equalTo(passwordCheckContainer.snp.bottom).offset(self.view.frame.height/45.11)
             make.width.equalToSuperview().dividedBy(1.45)
             make.height.equalToSuperview().dividedBy(19.80)
+        }
+        
+        goLoginButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(self.view.frame.height/11.94)
+            make.width.equalToSuperview().dividedBy(3.12)
+            make.height.equalToSuperview().dividedBy(54.13)
         }
     }
     
