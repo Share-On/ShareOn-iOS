@@ -58,6 +58,14 @@ class SignUpUserViewController: UIViewController {
         $0.setImage(UIImage(named: "ShareOn-eye"), for: .normal)
         $0.addTarget(self, action: #selector(onTapCheckEyeButton), for: .touchUpInside)
     }
+    
+    private let nextButton = UIButton().then {
+        $0.setTitle("다음", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.backgroundColor = .rgb(red: 159, green: 196, blue: 231)
+        $0.titleLabel?.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Bold")
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,12 +116,14 @@ class SignUpUserViewController: UIViewController {
         view.addSubview(composeLabel)
         view.addSubview(passwordCheckContainer)
         view.addSubview(showPasswordCheckButton)
+        view.addSubview(nextButton)
     }
     
     // MARK: - Corner Radius
     
     private func cornerRadius(){
         checkButton.layer.cornerRadius = self.view.frame.width/46.88
+        nextButton.layer.cornerRadius = self.view.frame.width/37.5
     }
     
     // MARK: - Location
@@ -169,6 +179,13 @@ class SignUpUserViewController: UIViewController {
             make.right.equalTo(passwordCheckContainer.divView).inset(self.view.frame.width/187.5)
             make.width.equalToSuperview().dividedBy(25)
             make.height.equalToSuperview().dividedBy(73.82)
+        }
+        
+        nextButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(passwordCheckContainer.snp.bottom).offset(self.view.frame.height/45.11)
+            make.width.equalToSuperview().dividedBy(1.45)
+            make.height.equalToSuperview().dividedBy(19.80)
         }
     }
     
