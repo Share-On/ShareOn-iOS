@@ -180,6 +180,22 @@ class SignUpInfoViewController: UIViewController {
         CertificationNumberContainer.tfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
     }
     
+    //MARK: - KeyboardType Setting
+    
+    private func keyboardTypeSetting(){
+        nameContainer.tf.keyboardType = .default
+        phoneNumberContainer.tf.keyboardType = .phonePad
+        CertificationNumberContainer.tf.keyboardType = .numberPad
+    }
+    
+    //MARK: - textField Point Set
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        nameContainer.tf.resignFirstResponder()
+        phoneNumberContainer.tf.resignFirstResponder()
+        CertificationNumberContainer.tf.resignFirstResponder()
+    }
+    
 }
 
 //MARK: - Preview

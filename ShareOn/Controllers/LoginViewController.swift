@@ -155,6 +155,20 @@ class LoginViewController: UIViewController {
         
         passwordContainer.tfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
     }
+    
+    //MARK: - KeyboardType Setting
+    
+    private func keyboardTypeSetting(){
+        idContainer.tf.keyboardType = .asciiCapable
+        passwordContainer.tf.keyboardType = .asciiCapable
+    }
+    
+    //MARK: - textField Point Set
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        idContainer.tf.resignFirstResponder()
+        passwordContainer.tf.resignFirstResponder()
+    }
 }
 
 //MARK: - Preview
