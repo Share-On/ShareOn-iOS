@@ -13,7 +13,7 @@ class UserInfoPutContainerView: UIView {
     lazy var tfTitle = UILabel().then {
         $0.text = "ID"
         $0.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Regular")
-        $0.textColor = .rgb(red: 255, green: 177, blue: 197)
+        $0.textColor = .rgb(red: 255, green: 166, blue: 189)
     }
     lazy var tf = UITextField().then {
         $0.placeholder = "아이디를 입력해주세요."
@@ -22,7 +22,7 @@ class UserInfoPutContainerView: UIView {
         $0.setPlaceholderColor(.rgb(red: 132, green: 132, blue: 132))
     }
     lazy var divView = UIView().then {
-        $0.backgroundColor = .rgb(red: 255, green: 177, blue: 197)
+        $0.backgroundColor = tfTitle.textColor
     }
     
     
