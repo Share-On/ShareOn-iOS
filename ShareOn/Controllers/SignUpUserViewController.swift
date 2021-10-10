@@ -41,6 +41,12 @@ class SignUpUserViewController: UIViewController {
         $0.addTarget(self, action: #selector(onTapEyeButton), for: .touchUpInside)
     }
     
+    private let composeLabel = UILabel().then {
+        $0.text = "비밀번호는 5~20자의 영문 소문자와 1개 이상의 숫자로 구성해주세요!"
+        $0.textColor = .rgb(red: 178, green: 178, blue: 178)
+        $0.dynamicFont(fontSize: 8, currentFontName: "AppleSDGothicNeo-Medium")
+    }
+    
     private let passwordCheckContainer = UserInfoPutContainerView().then{
         $0.tfTitle.textColor = .rgb(red: 70, green: 150, blue: 225)
         $0.tfTitle.text = "Password Check"
@@ -99,6 +105,7 @@ class SignUpUserViewController: UIViewController {
         view.addSubview(checkButton)
         view.addSubview(passwordContainer)
         view.addSubview(showPasswordButton)
+        view.addSubview(composeLabel)
         view.addSubview(passwordCheckContainer)
         view.addSubview(showPasswordCheckButton)
     }
@@ -143,6 +150,11 @@ class SignUpUserViewController: UIViewController {
             make.right.equalTo(passwordContainer.divView).inset(self.view.frame.width/187.5)
             make.width.equalToSuperview().dividedBy(25)
             make.height.equalToSuperview().dividedBy(73.82)
+        }
+        
+        composeLabel.snp.makeConstraints { make in
+            make.left.equalTo(passwordContainer)
+            make.top.equalTo(passwordContainer.snp.bottom).offset(self.view.frame.height/162.4)
         }
         
         passwordCheckContainer.snp.makeConstraints { make in
