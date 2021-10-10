@@ -64,6 +64,7 @@ class SignUpUserViewController: UIViewController {
         $0.setTitleColor(.white, for: .normal)
         $0.backgroundColor = .rgb(red: 159, green: 196, blue: 231)
         $0.titleLabel?.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Bold")
+        $0.addTarget(self, action: #selector(onTapNext), for: .touchUpInside)
     }
     
     private let goLoginButton = UIButton().then {
