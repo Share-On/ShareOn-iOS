@@ -38,6 +38,12 @@ class LoginViewController: UIViewController {
         $0.titleLabel?.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Bold")
     }
 
+    private let goSignUpButton = UIButton().then {
+        $0.setTitle("계정이 없으신가요?", for: .normal)
+        $0.setTitleColor(.rgb(red: 178, green: 178, blue: 178), for: .normal)
+        $0.titleLabel?.dynamicFont(fontSize: 12, currentFontName: "AppleSDGothicNeo-Bold")
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +64,7 @@ class LoginViewController: UIViewController {
     }
     
     //MARK: - Helpers
-    func configureUI(){
+    private func configureUI(){
         view.backgroundColor = .white
         containerViewSetting()
         addView()
@@ -68,23 +74,24 @@ class LoginViewController: UIViewController {
     
     // MARK: - Add View
     
-    func addView(){
+    private func addView(){
         view.addSubview(titleLabel)
         view.addSubview(loginContainer)
         view.addSubview(passwordContainer)
         view.addSubview(showPasswordButton)
         view.addSubview(loginButton)
+        view.addSubview(goSignUpButton)
     }
     
     // MARK: - Corner Radius
     
-    func cornerRadius(){
+    private func cornerRadius(){
         loginButton.layer.cornerRadius = self.view.frame.width/37.5
     }
     
     // MARK: - Location
     
-    func location(){
+    private func location(){
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(self.view.frame.height/4.75)
             make.left.equalToSuperview().offset(self.view.frame.width/6.25)
@@ -117,11 +124,18 @@ class LoginViewController: UIViewController {
             make.width.equalToSuperview().dividedBy(1.45)
             make.height.equalToSuperview().dividedBy(19.80)
         }
+        
+        goSignUpButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(self.view.frame.height/11.94)
+            make.width.equalToSuperview().dividedBy(3.75)
+            make.height.equalToSuperview().dividedBy(54.13)
+        }
     }
     
     // MARK: - ContainerView Setting
     
-    func containerViewSetting(){
+    private func containerViewSetting(){
         loginContainer.addSubview(loginContainer.tfTitle)
         loginContainer.addSubview(loginContainer.tf)
         loginContainer.addSubview(loginContainer.divView)
