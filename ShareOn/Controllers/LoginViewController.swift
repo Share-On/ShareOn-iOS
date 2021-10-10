@@ -42,6 +42,7 @@ class LoginViewController: UIViewController {
         $0.setTitle("계정이 없으신가요?", for: .normal)
         $0.setTitleColor(.rgb(red: 178, green: 178, blue: 178), for: .normal)
         $0.titleLabel?.dynamicFont(fontSize: 12, currentFontName: "AppleSDGothicNeo-Bold")
+        $0.addTarget(self, action: #selector(onTapSignUp), for: .touchUpInside)
     }
     
     //MARK: - Lifecycle
@@ -61,6 +62,12 @@ class LoginViewController: UIViewController {
             passwordContainer.tf.isSecureTextEntry = true
             showPasswordButton.setImage(UIImage(named: "ShareOn-eye"), for: .normal)
         }
+    }
+    
+    @objc
+    private func onTapSignUp(){
+        let controller = SignUpUserViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     //MARK: - Helpers
