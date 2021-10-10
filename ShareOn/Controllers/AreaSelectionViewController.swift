@@ -58,6 +58,20 @@ class AreaSelectionViewController: UIViewController {
         }
     }
     
+    private let smallDropDownButton = UIButton().then {
+        $0.backgroundColor = .rgb(red: 159, green: 196, blue: 231)
+    }
+    
+    private let smallAreaLabel = UILabel().then {
+        $0.text = "세부 지역 선택"
+        $0.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-UltraLight")
+        $0.textColor = .rgb(red: 255, green: 255, blue: 255)
+    }
+    
+    private let smallDownButton = UIButton().then {
+        $0.setBackgroundImage(UIImage(named: "ShareOn-smallDown"), for: .normal)
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +100,9 @@ class AreaSelectionViewController: UIViewController {
         view.addSubview(bigDropDownButton)
         view.addSubview(bigAreaLabel)
         view.addSubview(bigDownButton)
+        view.addSubview(smallDropDownButton)
+        view.addSubview(smallAreaLabel)
+        view.addSubview(smallDownButton)
     }
     
     // MARK: - Corner Radius
@@ -93,6 +110,7 @@ class AreaSelectionViewController: UIViewController {
     private func cornerRadius(){
         bigDropDownButton.layer.borderWidth = self.view.frame.width/375
         bigDropDownButton.layer.cornerRadius = self.view.frame.width/37.5
+        smallDropDownButton.layer.cornerRadius = self.view.frame.width/37.5
     }
     
     // MARK: - Location
@@ -120,6 +138,25 @@ class AreaSelectionViewController: UIViewController {
             make.right.equalTo(bigDropDownButton).inset(self.view.frame.width/19.74)
             make.width.equalToSuperview().dividedBy(31.25)
             make.height.equalToSuperview().dividedBy(162.4)
+        }
+        
+        smallDropDownButton.snp.makeConstraints { make in
+            make.left.equalTo(bigDropDownButton)
+            make.top.equalTo(bigDropDownButton.snp.bottom).offset(self.view.frame.height/58)
+            make.width.equalToSuperview().dividedBy(2.55)
+            make.height.equalToSuperview().dividedBy(20.82)
+        }
+        
+        smallAreaLabel.snp.makeConstraints { make in
+            make.left.equalTo(smallDropDownButton).offset(self.view.frame.width/25)
+            make.centerY.equalTo(smallDropDownButton)
+        }
+        
+        smallDownButton.snp.makeConstraints { make in
+            make.centerY.equalTo(smallDropDownButton)
+            make.right.equalTo(smallDropDownButton).inset(self.view.frame.width/19.74)
+            make.width.equalToSuperview().dividedBy(25)
+            make.height.equalToSuperview().dividedBy(111.23)
         }
 
     }
