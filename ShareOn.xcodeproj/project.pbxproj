@@ -16,6 +16,8 @@
 		AAE627F52711A60500FD1BAE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE627F42711A60500FD1BAE /* Extension.swift */; };
 		AAE627FC2712963300FD1BAE /* UserInfoPutContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE627FB2712963300FD1BAE /* UserInfoPutContainerView.swift */; };
 		AAE627FE2712B1B200FD1BAE /* SignUpUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE627FD2712B1B200FD1BAE /* SignUpUserViewController.swift */; };
+		AAE628002712D53000FD1BAE /* SignUpInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE627FF2712D53000FD1BAE /* SignUpInfoViewController.swift */; };
+		AAE628022712D97400FD1BAE /* AreaSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE628012712D97400FD1BAE /* AreaSelectionViewController.swift */; };
 		F590652BB7F6950016025514 /* Pods_ShareOn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93A791E4861D842840F6B1A /* Pods_ShareOn.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +34,8 @@
 		AAE627F42711A60500FD1BAE /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		AAE627FB2712963300FD1BAE /* UserInfoPutContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoPutContainerView.swift; sourceTree = "<group>"; };
 		AAE627FD2712B1B200FD1BAE /* SignUpUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserViewController.swift; sourceTree = "<group>"; };
+		AAE627FF2712D53000FD1BAE /* SignUpInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfoViewController.swift; sourceTree = "<group>"; };
+		AAE628012712D97400FD1BAE /* AreaSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSelectionViewController.swift; sourceTree = "<group>"; };
 		B93A791E4861D842840F6B1A /* Pods_ShareOn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareOn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F94E422BECE3C2DF9C62BE /* Pods-ShareOn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOn.release.xcconfig"; path = "Target Support Files/Pods-ShareOn/Pods-ShareOn.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,6 +132,8 @@
 			children = (
 				AAE627E82710165800FD1BAE /* LoginViewController.swift */,
 				AAE627FD2712B1B200FD1BAE /* SignUpUserViewController.swift */,
+				AAE627FF2712D53000FD1BAE /* SignUpInfoViewController.swift */,
+				AAE628012712D97400FD1BAE /* AreaSelectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -265,9 +271,11 @@
 			files = (
 				AAE627FC2712963300FD1BAE /* UserInfoPutContainerView.swift in Sources */,
 				AAE627E92710165800FD1BAE /* LoginViewController.swift in Sources */,
+				AAE628002712D53000FD1BAE /* SignUpInfoViewController.swift in Sources */,
 				AAE627D5270FFFAD00FD1BAE /* AppDelegate.swift in Sources */,
 				AAE627FE2712B1B200FD1BAE /* SignUpUserViewController.swift in Sources */,
 				AAE627F52711A60500FD1BAE /* Extension.swift in Sources */,
+				AAE628022712D97400FD1BAE /* AreaSelectionViewController.swift in Sources */,
 				AAE627D7270FFFAD00FD1BAE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
