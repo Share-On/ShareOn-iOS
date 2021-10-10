@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
         $0.textColor = .rgb(red: 255, green: 177, blue: 197)
     }
     
-    private let loginContainer = UserInfoPutContainerView()
+    private let idContainer = UserInfoPutContainerView()
     
     private let passwordContainer = UserInfoPutContainerView().then{
         $0.tfTitle.text = "Password"
@@ -83,7 +83,7 @@ class LoginViewController: UIViewController {
     
     private func addView(){
         view.addSubview(titleLabel)
-        view.addSubview(loginContainer)
+        view.addSubview(idContainer)
         view.addSubview(passwordContainer)
         view.addSubview(showPasswordButton)
         view.addSubview(loginButton)
@@ -104,7 +104,7 @@ class LoginViewController: UIViewController {
             make.left.equalToSuperview().offset(self.view.frame.width/6.25)
         }
         
-        loginContainer.snp.makeConstraints { make in
+        idContainer.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(titleLabel.snp.bottom).offset(self.view.frame.height/12.49)
             make.width.equalToSuperview().dividedBy(1.45)
@@ -113,7 +113,7 @@ class LoginViewController: UIViewController {
         
         passwordContainer.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(loginContainer.snp.bottom).offset(self.view.frame.height/58)
+            make.top.equalTo(idContainer.snp.bottom).offset(self.view.frame.height/58)
             make.width.equalToSuperview().dividedBy(1.45)
             make.height.equalToSuperview().dividedBy(17.65)
         }
@@ -143,11 +143,11 @@ class LoginViewController: UIViewController {
     // MARK: - ContainerView Setting
     
     private func containerViewSetting(){
-        loginContainer.addSubview(loginContainer.tfTitle)
-        loginContainer.addSubview(loginContainer.tf)
-        loginContainer.addSubview(loginContainer.divView)
+        idContainer.addSubview(idContainer.tfTitle)
+        idContainer.addSubview(idContainer.tf)
+        idContainer.addSubview(idContainer.divView)
         
-        loginContainer.tfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+        idContainer.tfSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
         
         passwordContainer.addSubview(passwordContainer.tfTitle)
         passwordContainer.addSubview(passwordContainer.tf)
