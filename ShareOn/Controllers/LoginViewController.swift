@@ -30,6 +30,13 @@ class LoginViewController: UIViewController {
         $0.setImage(UIImage(named: "ShareOn-eye"), for: .normal)
         $0.addTarget(self, action: #selector(onTapEyeButton), for: .touchUpInside)
     }
+    
+    private let loginButton = UIButton().then {
+        $0.setTitle("로그인", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.backgroundColor = .rgb(red: 255, green: 177, blue: 197)
+        $0.titleLabel?.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Bold")
+    }
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -66,12 +73,13 @@ class LoginViewController: UIViewController {
         view.addSubview(loginContainer)
         view.addSubview(passwordContainer)
         view.addSubview(showPasswordButton)
+        view.addSubview(loginButton)
     }
     
     // MARK: - Corner Radius
     
     func cornerRadius(){
-        
+        loginButton.layer.cornerRadius = self.view.frame.width/37.5
     }
     
     // MARK: - Location
@@ -101,6 +109,13 @@ class LoginViewController: UIViewController {
             make.right.equalTo(passwordContainer.divView).inset(self.view.frame.width/187.5)
             make.width.equalToSuperview().dividedBy(25)
             make.height.equalToSuperview().dividedBy(73.82)
+        }
+        
+        loginButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(passwordContainer.snp.bottom).offset(self.view.frame.height/45.11)
+            make.width.equalToSuperview().dividedBy(1.45)
+            make.height.equalToSuperview().dividedBy(19.80)
         }
     }
     
