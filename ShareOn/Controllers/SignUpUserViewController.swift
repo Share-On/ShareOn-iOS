@@ -22,6 +22,13 @@ class SignUpUserViewController: UIViewController {
         $0.tfTitle.textColor = .rgb(red: 70, green: 150, blue: 225)
     }
     
+    private let checkButton = UIButton().then {
+        $0.setTitle("중복 확인", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.dynamicFont(fontSize: 6.5, currentFontName: "AppleSDGothicNeo-Bold")
+        $0.backgroundColor = .rgb(red: 159, green: 196, blue: 231)
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,12 +51,13 @@ class SignUpUserViewController: UIViewController {
     private func addView(){
         view.addSubview(titleLabel)
         view.addSubview(idContainer)
+        view.addSubview(checkButton)
     }
     
     // MARK: - Corner Radius
     
     private func cornerRadius(){
-        
+        checkButton.layer.cornerRadius = self.view.frame.width/46.88
     }
     
     // MARK: - Location
@@ -65,6 +73,13 @@ class SignUpUserViewController: UIViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(self.view.frame.height/16.57)
             make.width.equalToSuperview().dividedBy(1.45)
             make.height.equalToSuperview().dividedBy(17.65)
+        }
+        
+        checkButton.snp.makeConstraints { make in
+            make.centerY.equalTo(idContainer.tf)
+            make.right.equalTo(idContainer).inset(self.view.frame.width/177.5)
+            make.width.equalToSuperview().dividedBy(7.5)
+            make.height.equalToSuperview().dividedBy(50.75)
         }
     }
     
