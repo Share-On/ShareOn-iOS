@@ -71,11 +71,13 @@ class DeviceLinkageViewController: UIViewController {
         deviceNameLabel.isHidden = false
         linkedLabel.isHidden = false
         linkFinishImage.isHidden = false
+        mainButton.isHidden = false
     }
     
     @objc
     private func onTapMain(){
-        
+        let controller = MainViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     //MARK: - Helpers
@@ -89,6 +91,7 @@ class DeviceLinkageViewController: UIViewController {
         deviceNameLabel.isHidden = true
         linkedLabel.isHidden = true
         linkFinishImage.isHidden = true
+        mainButton.isHidden = true
     }
     
     // MARK: - Add View
@@ -100,6 +103,7 @@ class DeviceLinkageViewController: UIViewController {
         view.addSubview(linkFinishImage)
         view.addSubview(deviceNameLabel)
         view.addSubview(linkedLabel)
+        view.addSubview(mainButton)
     }
     
     // MARK: - Corner Radius
@@ -111,6 +115,7 @@ class DeviceLinkageViewController: UIViewController {
         deviceInfoView.deviceImage.layer.cornerRadius = self.view.frame.width/5
         
         nextButton.layer.cornerRadius = self.view.frame.width/37.5
+        mainButton.layer.cornerRadius = self.view.frame.width/37.5
     }
     
     // MARK: - Location
@@ -150,6 +155,13 @@ class DeviceLinkageViewController: UIViewController {
         linkedLabel.snp.makeConstraints { make in
             make.top.equalTo(deviceNameLabel)
             make.left.equalTo(deviceNameLabel.snp.right).offset(self.view.frame.width/125)
+        }
+        
+        mainButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(deviceInfoView.snp.bottom).offset(self.view.frame.height/16.92)
+            make.width.equalToSuperview().dividedBy(1.45)
+            make.height.equalToSuperview().dividedBy(19.80)
         }
     }
     
