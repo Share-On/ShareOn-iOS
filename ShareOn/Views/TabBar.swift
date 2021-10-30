@@ -30,7 +30,7 @@ class TabBar: UIView {
         $0.setBackgroundImage(UIImage(named: "ShareOn-BlueSetting"), for: .normal)
     }
     
-    func tabBarSetting(screenHeight: CGFloat, screenWidth: CGFloat){
+    func blueTabBarSetting(screenHeight: CGFloat, screenWidth: CGFloat){
         backgroundImage.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.left.equalToSuperview()

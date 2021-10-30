@@ -191,7 +191,7 @@ class DeviceLinkageViewController: UIViewController {
         tabBar.addSubview(tabBar.historyButton)
         tabBar.addSubview(tabBar.settingButton)
         
-        tabBar.tabBarSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+        tabBar.blueTabBarSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
     }
     
 }
