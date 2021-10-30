@@ -56,7 +56,7 @@ class DeviceLinkageViewController: UIViewController {
         $0.dynamicFont(fontSize: 14, currentFontName: "AppleSDGothicNeo-Light")
     }
     
-    private let tabBar = BlueTabBar()
+    private let tabBar = TabBar()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -191,7 +191,7 @@ class DeviceLinkageViewController: UIViewController {
         tabBar.addSubview(tabBar.historyButton)
         tabBar.addSubview(tabBar.settingButton)
         
-        tabBar.tabBarSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+        tabBar.blueTabBarSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
     }
     
 }

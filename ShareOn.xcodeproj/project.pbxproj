@@ -10,7 +10,7 @@
 		AA5D6B9927140DD50051FE18 /* DeviceLinkageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5D6B9827140DD50051FE18 /* DeviceLinkageViewController.swift */; };
 		AA5D6B9B271482E10051FE18 /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5D6B9A271482E10051FE18 /* DeviceView.swift */; };
 		AA5D6B9D2715ADDF0051FE18 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5D6B9C2715ADDF0051FE18 /* MainViewController.swift */; };
-		AA5D6B9F2715C6110051FE18 /* BlueTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5D6B9E2715C6110051FE18 /* BlueTabBar.swift */; };
+		AA5D6B9F2715C6110051FE18 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5D6B9E2715C6110051FE18 /* TabBar.swift */; };
 		AAE627D5270FFFAD00FD1BAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE627D4270FFFAD00FD1BAE /* AppDelegate.swift */; };
 		AAE627D7270FFFAD00FD1BAE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE627D6270FFFAD00FD1BAE /* SceneDelegate.swift */; };
 		AAE627DE270FFFAF00FD1BAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAE627DD270FFFAF00FD1BAE /* Assets.xcassets */; };
@@ -30,7 +30,7 @@
 		AA5D6B9827140DD50051FE18 /* DeviceLinkageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceLinkageViewController.swift; sourceTree = "<group>"; };
 		AA5D6B9A271482E10051FE18 /* DeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
 		AA5D6B9C2715ADDF0051FE18 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		AA5D6B9E2715C6110051FE18 /* BlueTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTabBar.swift; sourceTree = "<group>"; };
+		AA5D6B9E2715C6110051FE18 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		AAE627D1270FFFAD00FD1BAE /* ShareOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE627D4270FFFAD00FD1BAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAE627D6270FFFAD00FD1BAE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 			children = (
 				AAE627FB2712963300FD1BAE /* UserInfoPutContainerView.swift */,
 				AA5D6B9A271482E10051FE18 /* DeviceView.swift */,
-				AA5D6B9E2715C6110051FE18 /* BlueTabBar.swift */,
+				AA5D6B9E2715C6110051FE18 /* TabBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -284,7 +284,7 @@
 				AAE627FC2712963300FD1BAE /* UserInfoPutContainerView.swift in Sources */,
 				AA5D6B9D2715ADDF0051FE18 /* MainViewController.swift in Sources */,
 				AA5D6B9927140DD50051FE18 /* DeviceLinkageViewController.swift in Sources */,
-				AA5D6B9F2715C6110051FE18 /* BlueTabBar.swift in Sources */,
+				AA5D6B9F2715C6110051FE18 /* TabBar.swift in Sources */,
 				AA5D6B9B271482E10051FE18 /* DeviceView.swift in Sources */,
 				AAE627E92710165800FD1BAE /* LoginViewController.swift in Sources */,
 				AAE628002712D53000FD1BAE /* SignUpInfoViewController.swift in Sources */,
