@@ -56,6 +56,8 @@ class DeviceLinkageViewController: UIViewController {
         $0.dynamicFont(fontSize: 14, currentFontName: "AppleSDGothicNeo-Light")
     }
     
+    private let tabBar = BlueTabBar()
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +86,7 @@ class DeviceLinkageViewController: UIViewController {
     private func configureUI(){
         view.backgroundColor = .white
         deviceViewSetting()
+        tabBarSetting()
         addView()
         cornerRadius()
         location()
@@ -104,6 +107,7 @@ class DeviceLinkageViewController: UIViewController {
         view.addSubview(deviceNameLabel)
         view.addSubview(linkedLabel)
         view.addSubview(mainButton)
+        view.addSubview(tabBar)
     }
     
     // MARK: - Corner Radius
@@ -163,6 +167,13 @@ class DeviceLinkageViewController: UIViewController {
             make.width.equalToSuperview().dividedBy(1.45)
             make.height.equalToSuperview().dividedBy(19.80)
         }
+        
+        tabBar.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalToSuperview().dividedBy(10.02)
+        }
     }
     
     private func deviceViewSetting(){
@@ -171,6 +182,16 @@ class DeviceLinkageViewController: UIViewController {
         deviceInfoView.addSubview(deviceInfoView.deviceImage)
         
         deviceInfoView.deviceViewSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
+    }
+    
+    private func tabBarSetting(){
+        tabBar.addSubview(tabBar.backgroundImage)
+        tabBar.addSubview(tabBar.mainButton)
+        tabBar.addSubview(tabBar.locationButton)
+        tabBar.addSubview(tabBar.historyButton)
+        tabBar.addSubview(tabBar.settingButton)
+        
+        tabBar.tabBarSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
     }
     
 }
