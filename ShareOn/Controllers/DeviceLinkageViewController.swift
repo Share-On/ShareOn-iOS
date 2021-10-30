@@ -56,7 +56,7 @@ class DeviceLinkageViewController: UIViewController {
         $0.dynamicFont(fontSize: 14, currentFontName: "AppleSDGothicNeo-Light")
     }
     
-    private let tabBar = BlueTabBar()
+    private let tabBar = TabBar()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {

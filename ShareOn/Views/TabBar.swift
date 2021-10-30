@@ -1,5 +1,5 @@
 //
-//  BlueTabBar.swift
+//  TabBar.swift
 //  ShareOn
 //
 //  Created by 노연주 on 2021/10/12.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class BlueTabBar: UIView {
+class TabBar: UIView {
     lazy var backgroundImage = UIImageView().then {
         $0.image = UIImage(named: "ShareOn-BlueBack")
     }
