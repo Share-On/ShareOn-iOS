@@ -34,6 +34,40 @@ class MainViewController: UIViewController {
         $0.backgroundColor = .rgb(red: 178, green: 238, blue: 158)
     }
     
+    private let currentEnergy = UILabel().then {
+        $0.text = "230kwh"
+        $0.textColor = .rgb(red: 113, green: 218, blue: 103)
+        $0.dynamicFont(fontSize: 18, currentFontName: "AlfaSlabOne-Regular")
+    }
+    
+    private let dateLabel1 = UILabel().then {
+        $0.text = "Utill September, 29"
+        $0.textColor = .rgb(red: 142, green: 142, blue: 142)
+        $0.dynamicFont(fontSize: 14, currentFontName: "AppleSDGothicNeo-Regular")
+    }
+    
+    private let saveLabel = UILabel().then {
+        $0.text = "현재 사용되고 있는 전기량 확인"
+        $0.textColor = .rgb(red: 113, green: 218, blue: 103)
+        $0.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Bold")
+    }
+    
+    private let dividedView2 = UIView().then {
+        $0.backgroundColor = .rgb(red: 178, green: 238, blue: 158)
+    }
+    
+    private let saveEnergy = UILabel().then {
+        $0.text = "200kwh"
+        $0.textColor = .rgb(red: 113, green: 218, blue: 103)
+        $0.dynamicFont(fontSize: 18, currentFontName: "AlfaSlabOne-Regular")
+    }
+    
+    private let dateLabel2 = UILabel().then {
+        $0.text = "Utill September, 29"
+        $0.textColor = .rgb(red: 142, green: 142, blue: 142)
+        $0.dynamicFont(fontSize: 14, currentFontName: "AppleSDGothicNeo-Regular")
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +93,12 @@ class MainViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(currentLabel)
         view.addSubview(dividedView)
+        view.addSubview(currentEnergy)
+        view.addSubview(dateLabel1)
+        view.addSubview(saveLabel)
+        view.addSubview(dividedView2)
+        view.addSubview(saveEnergy)
+        view.addSubview(dateLabel2)
     }
     
     // MARK: - Corner Radius
@@ -99,6 +139,16 @@ class MainViewController: UIViewController {
             make.width.equalTo(self.view.frame.width/1.42)
             make.height.equalTo(self.view.frame.height/812)
             make.top.equalTo(currentLabel.snp.bottom).offset(self.view.frame.height/81.2)
+        }
+        
+        currentEnergy.snp.makeConstraints { make in
+            make.right.equalToSuperview().offset(-self.view.frame.width/4.63)
+            make.top.equalTo(dividedView.snp.bottom).offset(self.view.frame.height/9.02)
+        }
+        
+        dateLabel1.snp.makeConstraints { make in
+            make.centerX.equalTo(currentEnergy)
+            make.top.equalTo(currentEnergy.snp.bottom).offset(self.view.frame.height/270.67)
         }
     }
     
