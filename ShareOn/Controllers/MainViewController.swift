@@ -150,6 +150,28 @@ class MainViewController: UIViewController {
             make.centerX.equalTo(currentEnergy)
             make.top.equalTo(currentEnergy.snp.bottom).offset(self.view.frame.height/270.67)
         }
+        
+        saveLabel.snp.makeConstraints { make in
+            make.top.equalTo(dateLabel1.snp.bottom).offset(self.view.frame.height/9.02)
+            make.left.equalTo(dividedView)
+        }
+        
+        dividedView2.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalTo(self.view.frame.width/1.42)
+            make.height.equalTo(self.view.frame.height/812)
+            make.top.equalTo(saveLabel.snp.bottom).offset(self.view.frame.height/81.2)
+        }
+        
+        saveEnergy.snp.makeConstraints { make in
+            make.right.equalToSuperview().offset(-self.view.frame.width/4.63)
+            make.top.equalTo(dividedView2.snp.bottom).offset(self.view.frame.height/9.02)
+        }
+        
+        dateLabel2.snp.makeConstraints { make in
+            make.centerX.equalTo(saveEnergy)
+            make.top.equalTo(saveEnergy.snp.bottom).offset(self.view.frame.height/270.67)
+        }
     }
     
     private func tabBarSetting(){
