@@ -12,6 +12,8 @@ import Then
 class LocationViewController: UIViewController {
     //MARK: - Properties
     
+    var pmValue:String = "230kwh"
+    
     private let backImage = UIImageView().then {
         $0.image = UIImage(named: "ShareOn-LocationBack")
         $0.contentMode = .scaleAspectFill
@@ -19,14 +21,17 @@ class LocationViewController: UIViewController {
     
     private let homeButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "ShareOn-HomeButton"), for: .normal)
+        $0.addTarget(self, action: #selector(onTapMain), for: .touchUpInside)
     }
     
     private let minusButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "ShareOn-MinusButton"), for: .normal)
+        $0.addTarget(self, action: #selector(onTapMinus), for: .touchUpInside)
     }
     
     private let plusButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "ShareOn-PlusButton"), for: .normal)
+        $0.addTarget(self, action: #selector(onTapPlus), for: .touchUpInside)
     }
     
     private let allEnergy = UILabel().then {
@@ -34,8 +39,8 @@ class LocationViewController: UIViewController {
         $0.dynamicFont(fontSize: 30, currentFontName: "AlfaSlabOne-Regular")
     }
     
-    private let pmLabel = UILabel().then {
-        $0.text = "230kwh"
+    lazy var pmLabel = UILabel().then {
+        $0.text = pmValue
         $0.dynamicFont(fontSize: 18, currentFontName: "AlfaSlabOne-Regular")
     }
     
@@ -46,6 +51,26 @@ class LocationViewController: UIViewController {
     }
     
     //MARK: - Selectors
+    
+    @objc
+    private func onTapMain(){
+        let controller = MainViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc
+    private func onTapMinus(){
+        pmLabel.text = "-" + pmValue
+        pmLabel.textColor = .rgb(red: 70, green: 150, blue: 225)
+        pmLabel.isHidden = false
+    }
+    
+    @objc
+    private func onTapPlus(){
+        pmLabel.text = "+" + pmValue
+        pmLabel.textColor = .rgb(red: 227, green: 75, blue: 115)
+        pmLabel.isHidden = false
+    }
     
     //MARK: - Helpers
     private func configureUI(){
@@ -64,6 +89,8 @@ class LocationViewController: UIViewController {
         view.addSubview(plusButton)
         view.addSubview(allEnergy)
         view.addSubview(pmLabel)
+        
+        pmLabel.isHidden = true
     }
     
     // MARK: - Corner Radius
