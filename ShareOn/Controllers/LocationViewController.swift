@@ -17,6 +17,10 @@ class LocationViewController: UIViewController {
         $0.contentMode = .scaleAspectFill
     }
     
+    private let homeButton = UIButton().then {
+        $0.setBackgroundImage(UIImage(named: "ShareOn-HomeButton"), for: .normal)
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +41,7 @@ class LocationViewController: UIViewController {
     
     private func addView(){
         view.addSubview(backImage)
+        view.addSubview(homeButton)
     }
     
     // MARK: - Corner Radius
@@ -50,6 +55,13 @@ class LocationViewController: UIViewController {
     private func location(){
         backImage.snp.makeConstraints { make in
             make.width.height.equalToSuperview()
+        }
+        
+        homeButton.snp.makeConstraints { make in
+            make.width.equalToSuperview().dividedBy(12.5)
+            make.height.equalToSuperview().dividedBy(25.38)
+            make.right.equalToSuperview().offset(-self.view.frame.width/22.06)
+            make.top.equalToSuperview().offset(self.view.frame.height/14.76)
         }
     }
 
