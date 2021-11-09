@@ -42,6 +42,7 @@ class LoginViewController: UIViewController {
         $0.setTitleColor(.white, for: .normal)
         $0.backgroundColor = .rgb(red: 255, green: 177, blue: 197)
         $0.titleLabel?.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Bold")
+        $0.addTarget(self, action: #selector(onTapMain), for: .touchUpInside)
     }
 
     private let goSignUpButton = UIButton().then {
@@ -73,6 +74,12 @@ class LoginViewController: UIViewController {
     @objc
     private func onTapSignUp(){
         let controller = SignUpUserViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc
+    private func onTapMain(){
+        let controller = MainViewController()
         navigationController?.pushViewController(controller, animated: true)
     }
     

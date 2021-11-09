@@ -22,7 +22,12 @@ class MainViewController: UIViewController {
         $0.dynamicFont(fontSize: 30, currentFontName: "AlfaSlabOne-Regular")
     }
     
-    private let tabBar = TabBar()
+    private let tabBar = TabBar().then {
+        $0.mainButton.addTarget(self, action: #selector(onTapMain), for: .touchUpInside)
+        $0.locationButton.addTarget(self, action: #selector(onTapLocation), for: .touchUpInside)
+        $0.historyButton.addTarget(self, action: #selector(onTapHistory), for: .touchUpInside)
+        $0.settingButton.addTarget(self, action: #selector(onTapSetting), for: .touchUpInside)
+    }
     
     private let currentLabel = UILabel().then {
         $0.text = "현재 저장된 총 전기량 확인"
@@ -75,7 +80,29 @@ class MainViewController: UIViewController {
     }
     
     //MARK: - Selectors
+    @objc
+    private func onTapMain(){
+        let controller = MainViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
     
+    @objc
+    private func onTapLocation(){
+        let controller = LocationViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc
+    private func onTapHistory(){
+        let controller = HistoryViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc
+    private func onTapSetting(){
+        let controller = SettingViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
     //MARK: - Helpers
     private func configureUI(){
         view.backgroundColor = .white
