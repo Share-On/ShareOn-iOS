@@ -56,7 +56,12 @@ class DeviceLinkageViewController: UIViewController {
         $0.dynamicFont(fontSize: 14, currentFontName: "AppleSDGothicNeo-Light")
     }
     
-    private let tabBar = TabBar()
+    private let tabBar = TabBar().then {
+        $0.mainButton.addTarget(self, action: #selector(onTapMain), for: .touchUpInside)
+        $0.locationButton.addTarget(self, action: #selector(onTapLocation), for: .touchUpInside)
+        $0.historyButton.addTarget(self, action: #selector(onTapHistory), for: .touchUpInside)
+        $0.settingButton.addTarget(self, action: #selector(onTapSetting), for: .touchUpInside)
+    }
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -79,6 +84,24 @@ class DeviceLinkageViewController: UIViewController {
     @objc
     private func onTapMain(){
         let controller = MainViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc
+    private func onTapLocation(){
+        let controller = LocationViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc
+    private func onTapHistory(){
+        let controller = HistoryViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc
+    private func onTapSetting(){
+        let controller = SettingViewController()
         navigationController?.pushViewController(controller, animated: true)
     }
     
