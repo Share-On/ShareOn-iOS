@@ -12,7 +12,10 @@ import Then
 class LocationViewController: UIViewController {
     //MARK: - Properties
     
-    private let tabBar = TabBar()
+    private let backImage = UIImageView().then {
+        $0.image = UIImage(named: "ShareOn-LocationBack")
+        $0.contentMode = .scaleAspectFill
+    }
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -33,7 +36,7 @@ class LocationViewController: UIViewController {
     // MARK: - Add View
     
     private func addView(){
-        
+        view.addSubview(backImage)
     }
     
     // MARK: - Corner Radius
@@ -45,7 +48,9 @@ class LocationViewController: UIViewController {
     // MARK: - Location
     
     private func location(){
-        
+        backImage.snp.makeConstraints { make in
+            make.width.height.equalToSuperview()
+        }
     }
 
 }
