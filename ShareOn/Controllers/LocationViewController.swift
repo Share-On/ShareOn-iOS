@@ -34,6 +34,11 @@ class LocationViewController: UIViewController {
         $0.dynamicFont(fontSize: 30, currentFontName: "AlfaSlabOne-Regular")
     }
     
+    private let pmLabel = UILabel().then {
+        $0.text = "230kwh"
+        $0.dynamicFont(fontSize: 18, currentFontName: "AlfaSlabOne-Regular")
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +63,7 @@ class LocationViewController: UIViewController {
         view.addSubview(minusButton)
         view.addSubview(plusButton)
         view.addSubview(allEnergy)
+        view.addSubview(pmLabel)
     }
     
     // MARK: - Corner Radius
@@ -95,6 +101,11 @@ class LocationViewController: UIViewController {
         
         allEnergy.snp.makeConstraints { make in
             make.center.equalToSuperview()
+        }
+        
+        pmLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(allEnergy.snp.bottom)
         }
     }
 
