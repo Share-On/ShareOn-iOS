@@ -29,6 +29,11 @@ class LocationViewController: UIViewController {
         $0.setBackgroundImage(UIImage(named: "ShareOn-PlusButton"), for: .normal)
     }
     
+    private let allEnergy = UILabel().then {
+        $0.text = "1230kwh"
+        $0.dynamicFont(fontSize: 30, currentFontName: "AlfaSlabOne-Regular")
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +57,7 @@ class LocationViewController: UIViewController {
         view.addSubview(homeButton)
         view.addSubview(minusButton)
         view.addSubview(plusButton)
+        view.addSubview(allEnergy)
     }
     
     // MARK: - Corner Radius
@@ -85,6 +91,10 @@ class LocationViewController: UIViewController {
             make.width.height.equalTo(minusButton)
             make.bottom.equalToSuperview().offset(-self.view.frame.height/8.59)
             make.right.equalTo(-self.view.frame.width/3.11)
+        }
+        
+        allEnergy.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
     }
 
