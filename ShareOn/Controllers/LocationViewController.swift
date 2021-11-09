@@ -21,6 +21,14 @@ class LocationViewController: UIViewController {
         $0.setBackgroundImage(UIImage(named: "ShareOn-HomeButton"), for: .normal)
     }
     
+    private let minusButton = UIButton().then {
+        $0.setBackgroundImage(UIImage(named: "ShareOn-MinusButton"), for: .normal)
+    }
+    
+    private let plusButton = UIButton().then {
+        $0.setBackgroundImage(UIImage(named: "ShareOn-PlusButton"), for: .normal)
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +50,8 @@ class LocationViewController: UIViewController {
     private func addView(){
         view.addSubview(backImage)
         view.addSubview(homeButton)
+        view.addSubview(minusButton)
+        view.addSubview(plusButton)
     }
     
     // MARK: - Corner Radius
@@ -62,6 +72,19 @@ class LocationViewController: UIViewController {
             make.height.equalToSuperview().dividedBy(25.38)
             make.right.equalToSuperview().offset(-self.view.frame.width/22.06)
             make.top.equalToSuperview().offset(self.view.frame.height/14.76)
+        }
+        
+        minusButton.snp.makeConstraints { make in
+            make.width.equalToSuperview().dividedBy(4.38)
+            make.height.equalToSuperview().dividedBy(10.34)
+            make.top.equalToSuperview().offset(self.view.frame.height/5.01)
+            make.right.equalToSuperview().offset(-self.view.frame.width/3.97)
+        }
+        
+        plusButton.snp.makeConstraints { make in
+            make.width.height.equalTo(minusButton)
+            make.bottom.equalToSuperview().offset(-self.view.frame.height/8.59)
+            make.right.equalTo(-self.view.frame.width/3.11)
         }
     }
 
