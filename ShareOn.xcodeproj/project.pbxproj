@@ -14,6 +14,7 @@
 		AAAA0F012739406900DBCA68 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA0F002739406900DBCA68 /* LocationViewController.swift */; };
 		AAAA0F032739410C00DBCA68 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA0F022739410C00DBCA68 /* HistoryViewController.swift */; };
 		AAAA0F052739414600DBCA68 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA0F042739414600DBCA68 /* SettingViewController.swift */; };
+		AAAA0F43273C937900DBCA68 /* MonthOfEnergyAlterView.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA0F42273C937900DBCA68 /* MonthOfEnergyAlterView.swift.swift */; };
 		AAE627D5270FFFAD00FD1BAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE627D4270FFFAD00FD1BAE /* AppDelegate.swift */; };
 		AAE627D7270FFFAD00FD1BAE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE627D6270FFFAD00FD1BAE /* SceneDelegate.swift */; };
 		AAE627DE270FFFAF00FD1BAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAE627DD270FFFAF00FD1BAE /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		AAAA0F002739406900DBCA68 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		AAAA0F022739410C00DBCA68 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		AAAA0F042739414600DBCA68 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		AAAA0F42273C937900DBCA68 /* MonthOfEnergyAlterView.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthOfEnergyAlterView.swift.swift; sourceTree = "<group>"; };
 		AAE627D1270FFFAD00FD1BAE /* ShareOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE627D4270FFFAD00FD1BAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAE627D6270FFFAD00FD1BAE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				AAE627FB2712963300FD1BAE /* UserInfoPutContainerView.swift */,
 				AA5D6B9A271482E10051FE18 /* DeviceView.swift */,
 				AA5D6B9E2715C6110051FE18 /* TabBar.swift */,
+				AAAA0F42273C937900DBCA68 /* MonthOfEnergyAlterView.swift.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAAA0F43273C937900DBCA68 /* MonthOfEnergyAlterView.swift.swift in Sources */,
 				AAE627FC2712963300FD1BAE /* UserInfoPutContainerView.swift in Sources */,
 				AA5D6B9D2715ADDF0051FE18 /* MainViewController.swift in Sources */,
 				AA5D6B9927140DD50051FE18 /* DeviceLinkageViewController.swift in Sources */,
