@@ -44,6 +44,8 @@ class LocationViewController: UIViewController {
         $0.dynamicFont(fontSize: 18, currentFontName: "AlfaSlabOne-Regular")
     }
     
+//    private let alterView = MonthOfEnergyAlterView()
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +77,7 @@ class LocationViewController: UIViewController {
     //MARK: - Helpers
     private func configureUI(){
         view.backgroundColor = .white
+//        energyAlterViewSetting()
         addView()
         cornerRadius()
         location()
@@ -89,7 +92,8 @@ class LocationViewController: UIViewController {
         view.addSubview(plusButton)
         view.addSubview(allEnergy)
         view.addSubview(pmLabel)
-        
+//        view.addSubview(alterView)
+
         pmLabel.isHidden = true
     }
     
@@ -136,6 +140,32 @@ class LocationViewController: UIViewController {
         }
     }
 
+//    private func energyAlterViewSetting(){
+//        alterView.snp.makeConstraints { make in
+//            make.center.equalToSuperview()
+//            make.width.equalToSuperview().dividedBy(1.21)
+//            make.height.equalToSuperview().dividedBy(5.64)
+//        }
+//
+//        alterView.energyGraph.snp.makeConstraints { make in
+//            make.centerY.equalToSuperview()
+//            make.width.equalToSuperview().dividedBy(6.25)
+//            make.height.equalTo(alterView.snp.width)
+//            make.left.equalTo(alterView).offset(self.view.frame.width/12.5)
+//        }
+//
+//        alterView.monthLabel.snp.makeConstraints { make in
+//            make.top.equalToSuperview().offset(self.view.frame.height/23.2)
+//        }
+//    }
+    
+    private func plusAlterViewSetting(){
+        
+    }
+    
+    private func minusAlterViewSetting(){
+        
+    }
 }
 
 //MARK: - Preview

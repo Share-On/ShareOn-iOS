@@ -53,6 +53,7 @@ class SettingViewController: UIViewController {
     //MARK: - Helpers
     private func configureUI(){
         view.backgroundColor = .white
+        tabBarSetting()
         addView()
         cornerRadius()
         location()

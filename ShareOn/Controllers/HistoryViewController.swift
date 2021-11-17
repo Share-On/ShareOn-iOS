@@ -53,6 +53,7 @@ class HistoryViewController: UIViewController {
     //MARK: - Helpers
     private func configureUI(){
         view.backgroundColor = .white
+        tabBarSetting()
         addView()
         cornerRadius()
         location()
@@ -61,7 +62,7 @@ class HistoryViewController: UIViewController {
     // MARK: - Add View
     
     private func addView(){
-        
+        view.addSubview(tabBar)
     }
     
     // MARK: - Corner Radius
@@ -73,7 +74,12 @@ class HistoryViewController: UIViewController {
     // MARK: - Location
     
     private func location(){
-        
+        tabBar.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalToSuperview().dividedBy(5.31)
+        }
     }
     
     private func tabBarSetting(){
