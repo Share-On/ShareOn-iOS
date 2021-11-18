@@ -29,7 +29,9 @@ class HistoryViewController: UIViewController {
         $0.dynamicFont(fontSize: 18, currentFontName: "AppleSDGothicNeo-Thin")
     }
     
-    
+    private let nothingImage = UIImageView().then {
+        $0.image = UIImage(named: "ShareOn-nothing")
+    }
     
     private let tabBar = TabBar().then {
         $0.mainButton.addTarget(self, action: #selector(onTapMain), for: .touchUpInside)
@@ -85,6 +87,7 @@ class HistoryViewController: UIViewController {
         view.addSubview(homeButton)
         view.addSubview(titleLabel)
         view.addSubview(nothingLabel)
+        view.addSubview(nothingImage)
     }
     
     // MARK: - Corner Radius
@@ -118,6 +121,13 @@ class HistoryViewController: UIViewController {
         nothingLabel.snp.makeConstraints { make in
             make.left.equalTo(titleLabel)
             make.top.equalTo(titleLabel.snp.bottom).offset(self.view.frame.height/35.30)
+        }
+        
+        nothingImage.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(nothingLabel.snp.bottom).offset(self.view.frame.height/9.50)
+            make.width.equalToSuperview().dividedBy(1.51)
+            make.height.equalToSuperview().dividedBy(3.36)
         }
     }
     
