@@ -24,6 +24,13 @@ class HistoryViewController: UIViewController {
         $0.numberOfLines = 2
     }
     
+    private let nothingLabel = UILabel().then {
+        $0.text = "아직 공유내역이 없어요!"
+        $0.dynamicFont(fontSize: 18, currentFontName: "AppleSDGothicNeo-Thin")
+    }
+    
+    
+    
     private let tabBar = TabBar().then {
         $0.mainButton.addTarget(self, action: #selector(onTapMain), for: .touchUpInside)
         $0.locationButton.addTarget(self, action: #selector(onTapLocation), for: .touchUpInside)
@@ -77,6 +84,7 @@ class HistoryViewController: UIViewController {
         view.addSubview(tabBar)
         view.addSubview(homeButton)
         view.addSubview(titleLabel)
+        view.addSubview(nothingLabel)
     }
     
     // MARK: - Corner Radius
@@ -105,6 +113,11 @@ class HistoryViewController: UIViewController {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(self.view.frame.height/6.88)
             make.left.equalToSuperview().offset(self.view.frame.width/5.07)
+        }
+        
+        nothingLabel.snp.makeConstraints { make in
+            make.left.equalTo(titleLabel)
+            make.top.equalTo(titleLabel.snp.bottom).offset(self.view.frame.height/35.30)
         }
     }
     
