@@ -78,6 +78,9 @@ class HistoryViewController: UIViewController {
         addView()
         cornerRadius()
         location()
+        
+        nothingLabel.isHidden = true
+        nothingImage.isHidden = true
     }
     
     // MARK: - Add View
