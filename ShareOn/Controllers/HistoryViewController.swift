@@ -12,6 +12,18 @@ import Then
 class HistoryViewController: UIViewController {
     //MARK: - Properties
     
+    private let homeButton = UIButton().then {
+        $0.setBackgroundImage(UIImage(named: "ShareOn-HomeButton"), for: .normal)
+        $0.addTarget(self, action: #selector(onTapMain), for: .touchUpInside)
+    }
+    
+    private let titleLabel = UILabel().then {
+        $0.text = "Transmission\nHistory"
+        $0.textColor = .rgb(red: 255, green: 177, blue: 197)
+        $0.dynamicFont(fontSize: 30, currentFontName: "AlfaSlabOne-Regular")
+        $0.numberOfLines = 2
+    }
+    
     private let tabBar = TabBar().then {
         $0.mainButton.addTarget(self, action: #selector(onTapMain), for: .touchUpInside)
         $0.locationButton.addTarget(self, action: #selector(onTapLocation), for: .touchUpInside)
@@ -63,6 +75,8 @@ class HistoryViewController: UIViewController {
     
     private func addView(){
         view.addSubview(tabBar)
+        view.addSubview(homeButton)
+        view.addSubview(titleLabel)
     }
     
     // MARK: - Corner Radius
@@ -79,6 +93,18 @@ class HistoryViewController: UIViewController {
             make.bottom.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalToSuperview().dividedBy(5.31)
+        }
+        
+        homeButton.snp.makeConstraints { make in
+            make.width.equalToSuperview().dividedBy(12.5)
+            make.height.equalToSuperview().dividedBy(25.38)
+            make.right.equalToSuperview().offset(-self.view.frame.width/22.06)
+            make.top.equalToSuperview().offset(self.view.frame.height/14.76)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(self.view.frame.height/6.88)
+            make.left.equalToSuperview().offset(self.view.frame.width/5.07)
         }
     }
     
