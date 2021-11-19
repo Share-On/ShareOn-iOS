@@ -56,17 +56,17 @@ class HistoryTableViewCell: UITableViewCell {
     }
 
     func configureUI(){
+        let bounds = contentView.bounds
         
         layer.shadowColor = UIColor.rgba(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
         layer.shadowOpacity = 1.5
         layer.shadowRadius = 10
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.position = contentView.center
-        layer.shadowPath = UIBezierPath(roundedRect: contentView.bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
+        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
         contentView.layer.cornerRadius = 10
         contentView.layer.masksToBounds = true
         
-        let bounds = contentView.bounds
         contentView.addSubview(plusOrMinus)
         contentView.addSubview(dateLabel)
         contentView.addSubview(locationLabel)
@@ -96,7 +96,7 @@ class HistoryTableViewCell: UITableViewCell {
         
         energyLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.left.equalTo(locationLabel.snp.right).offset(bounds.width/14.42)
+            make.right.equalToSuperview().offset(-bounds.width/12.08)
         }
     }
 }
