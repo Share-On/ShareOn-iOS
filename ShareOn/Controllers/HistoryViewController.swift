@@ -37,6 +37,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         $0.separatorStyle = .none
         $0.showsVerticalScrollIndicator = false
         $0.backgroundColor = .clear
+        $0.isScrollEnabled = false
     }
     
     private let plusOrMinusList: [String] = ["+", "-", "-", "+", "+", "-", "+", "-"]
