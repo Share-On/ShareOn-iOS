@@ -51,6 +51,12 @@ class HistoryTableViewCell: UITableViewCell {
     }
 
     func configureUI(){
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.5
+        layer.shadowRadius = 10
+        contentView.layer.cornerRadius = 10
+        contentView.layer.masksToBounds = true
+        
         let bounds = contentView.bounds
         contentView.addSubview(plusOrMinus)
         contentView.addSubview(dateLabel)
