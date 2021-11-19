@@ -37,7 +37,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         $0.separatorStyle = .none
         $0.showsVerticalScrollIndicator = false
         $0.backgroundColor = .clear
-        $0.isScrollEnabled = false
     }
     
     private let plusOrMinusList: [String] = ["+", "-", "-", "+", "+", "-", "+", "-"]
@@ -49,6 +48,8 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     private let locationList: [String] = ["광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구"]
     
     private let energyList: [String] = ["230kwh", "180kwh", "340kwh", "230kwh", "130kwh", "280kwh", "90kwh", "300kwh"]
+    
+    private let energyColor: [UIColor] = [.plusEnergyColor, .minusEnergyColor, .minusEnergyColor, .plusEnergyColor, .plusEnergyColor, .minusEnergyColor, .plusEnergyColor, .minusEnergyColor]
     
     private let tabBar = TabBar().then {
         $0.mainButton.addTarget(self, action: #selector(onTapMain), for: .touchUpInside)
@@ -189,12 +190,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.dateLabel.text = dateList[indexPath.row]
         cell.locationLabel.text = locationList[indexPath.row]
         cell.energyLabel.text = energyList[indexPath.row]
-        
-        if cell.plusOrMinus.textColor == .plusColor {
-            cell.energyLabel.textColor = .plusEnergyColor
-        } else {
-            cell.energyLabel.textColor = .minusEnergyColor
-        }
+        cell.energyLabel.textColor = energyColor[indexPath.row]
         
         cell.selectionStyle = .none
         return cell
@@ -202,10 +198,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.view.frame.height/16.24
-    }
-            
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
     }
 }
 
