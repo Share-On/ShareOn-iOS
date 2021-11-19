@@ -25,6 +25,12 @@ extension UIColor{
     static func rgba(red: CGFloat ,green: CGFloat,blue:CGFloat, alpha:CGFloat) -> UIColor{
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
     }
+    
+    static let plusColor = UIColor.rgb(red: 221, green: 114, blue: 142)
+    static let minusColor = UIColor.rgb(red: 115, green: 187, blue: 255)
+    
+    static let plusEnergyColor = UIColor.rgb(red: 255, green: 177, blue: 197)
+    static let minusEnergyColor = UIColor.rgb(red: 139, green: 189, blue: 236)
 }
 
 //MARK: - UILabel dynamic font
