@@ -49,11 +49,20 @@ class HistoryTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 7, left: 0, bottom: 0, right: 0))
+    }
 
     func configureUI(){
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.5
+        
+        layer.shadowColor = UIColor.rgba(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        layer.shadowOpacity = 1.5
         layer.shadowRadius = 10
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.position = contentView.center
+        layer.shadowPath = UIBezierPath(roundedRect: contentView.bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
         contentView.layer.cornerRadius = 10
         contentView.layer.masksToBounds = true
         
@@ -62,7 +71,7 @@ class HistoryTableViewCell: UITableViewCell {
         contentView.addSubview(dateLabel)
         contentView.addSubview(locationLabel)
         contentView.addSubview(energyLabel)
-        
+
         contentView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.left.equalToSuperview()
@@ -87,7 +96,7 @@ class HistoryTableViewCell: UITableViewCell {
         
         energyLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.right.equalToSuperview().offset(-bounds.width/12.08)
+            make.left.equalTo(locationLabel.snp.right).offset(bounds.width/14.42)
         }
     }
 }
