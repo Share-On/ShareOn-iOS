@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class HistoryViewController: UIViewController {
+class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //MARK: - Properties
     
     private let homeButton = UIButton().then {
@@ -32,6 +32,21 @@ class HistoryViewController: UIViewController {
     private let nothingImage = UIImageView().then {
         $0.image = UIImage(named: "ShareOn-nothing")
     }
+    
+    private let histotyTableView = UITableView().then {
+        $0.separatorStyle = .none
+        $0.showsVerticalScrollIndicator = false
+    }
+    
+    private let plusOrMinusList: [String] = ["+", "-", "-", "+", "+", "-", "+", "-"]
+    
+    private let plusOfMinusColor: [UIColor] = [.plusColor, .minusColor, .minusColor, .plusColor, .plusColor, .minusColor, .plusColor, .minusColor]
+    
+    private let dateList: [String] = ["2021년 11월 19일", "2021년 11월 15일", "2021년 11월 10일", "2021년 11월 10일", "2021년 10월 23일", "2021년 10월 16일", "2021년 9월 29일", "2021년 9월 29일"]
+    
+    private let locationList: [String] = ["광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구"]
+    
+    private let energyList: [String] = ["230kwh", "180kwh", "340kwh", "230kwh", "130kwh", "280kwh", "90kwh", "300kwh"]
     
     private let tabBar = TabBar().then {
         $0.mainButton.addTarget(self, action: #selector(onTapMain), for: .touchUpInside)
@@ -144,6 +159,42 @@ class HistoryViewController: UIViewController {
         tabBar.pinkTabBarSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
     }
     
+    private func tableViewSetting(){
+        histotyTableView.dataSource = self
+        histotyTableView.delegate = self
+        
+        histotyTableView.register(HistoryTableViewCell.self, forCellReuseIdentifier: HistoryTableViewCell.HistoryTableViewCellIdentifier)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return plusOrMinusList.count
+    }
+        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableViewCell") as! HistoryTableViewCell
+        cell.plusOrMinus.text = plusOrMinusList[indexPath.row]
+        cell.plusOrMinus.textColor = plusOfMinusColor[indexPath.row]
+        cell.dateLabel.text = dateList[indexPath.row]
+        cell.locationLabel.text = locationList[indexPath.row]
+        cell.energyLabel.text = energyList[indexPath.row]
+        
+        if cell.plusOrMinus.textColor == .plusColor {
+            cell.energyLabel.textColor = .plusEnergyColor
+        } else {
+            cell.energyLabel.textColor = .minusEnergyColor
+        }
+        
+        cell.selectionStyle = .none
+        return cell
+    }
+        
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.view.frame.height/16.24
+    }
+            
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
 }
 
 //MARK: - Preview
