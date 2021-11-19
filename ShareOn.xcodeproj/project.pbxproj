@@ -11,6 +11,7 @@
 		AA5D6B9B271482E10051FE18 /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5D6B9A271482E10051FE18 /* DeviceView.swift */; };
 		AA5D6B9D2715ADDF0051FE18 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5D6B9C2715ADDF0051FE18 /* MainViewController.swift */; };
 		AA5D6B9F2715C6110051FE18 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5D6B9E2715C6110051FE18 /* TabBar.swift */; };
+		AAA1D060274735D600BD446A /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D05F274735D600BD446A /* HistoryTableViewCell.swift */; };
 		AAAA0F012739406900DBCA68 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA0F002739406900DBCA68 /* LocationViewController.swift */; };
 		AAAA0F032739410C00DBCA68 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA0F022739410C00DBCA68 /* HistoryViewController.swift */; };
 		AAAA0F052739414600DBCA68 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA0F042739414600DBCA68 /* SettingViewController.swift */; };
@@ -35,6 +36,7 @@
 		AA5D6B9A271482E10051FE18 /* DeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
 		AA5D6B9C2715ADDF0051FE18 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AA5D6B9E2715C6110051FE18 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		AAA1D05F274735D600BD446A /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		AAAA0F002739406900DBCA68 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		AAAA0F022739410C00DBCA68 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		AAAA0F042739414600DBCA68 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,14 @@
 				F5F94E422BECE3C2DF9C62BE /* Pods-ShareOn.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		AAA1D05E274735A600BD446A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AAA1D05F274735D600BD446A /* HistoryTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		AAE627C8270FFFAD00FD1BAE = {
@@ -138,6 +148,7 @@
 		AAE627EE271021D200FD1BAE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AAA1D05E274735A600BD446A /* Cells */,
 				AAE627FB2712963300FD1BAE /* UserInfoPutContainerView.swift */,
 				AA5D6B9A271482E10051FE18 /* DeviceView.swift */,
 				AA5D6B9E2715C6110051FE18 /* TabBar.swift */,
@@ -302,6 +313,7 @@
 				AAAA0F052739414600DBCA68 /* SettingViewController.swift in Sources */,
 				AAAA0F032739410C00DBCA68 /* HistoryViewController.swift in Sources */,
 				AAE627E92710165800FD1BAE /* LoginViewController.swift in Sources */,
+				AAA1D060274735D600BD446A /* HistoryTableViewCell.swift in Sources */,
 				AAE628002712D53000FD1BAE /* SignUpInfoViewController.swift in Sources */,
 				AAAA0F012739406900DBCA68 /* LocationViewController.swift in Sources */,
 				AAE627D5270FFFAD00FD1BAE /* AppDelegate.swift in Sources */,

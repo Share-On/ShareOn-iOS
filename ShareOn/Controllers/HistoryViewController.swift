@@ -9,8 +9,46 @@ import UIKit
 import SnapKit
 import Then
 
-class HistoryViewController: UIViewController {
+class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //MARK: - Properties
+    
+    private let homeButton = UIButton().then {
+        $0.setBackgroundImage(UIImage(named: "ShareOn-HomeButton"), for: .normal)
+        $0.addTarget(self, action: #selector(onTapMain), for: .touchUpInside)
+    }
+    
+    private let titleLabel = UILabel().then {
+        $0.text = "Transmission\nHistory"
+        $0.textColor = .rgb(red: 255, green: 177, blue: 197)
+        $0.dynamicFont(fontSize: 30, currentFontName: "AlfaSlabOne-Regular")
+        $0.numberOfLines = 2
+    }
+    
+    private let nothingLabel = UILabel().then {
+        $0.text = "아직 공유내역이 없어요!"
+        $0.dynamicFont(fontSize: 18, currentFontName: "AppleSDGothicNeo-Thin")
+    }
+    
+    private let nothingImage = UIImageView().then {
+        $0.image = UIImage(named: "ShareOn-nothing")
+    }
+    
+    private let histotyTableView = UITableView().then {
+        $0.separatorStyle = .none
+        $0.showsVerticalScrollIndicator = false
+        $0.backgroundColor = .clear
+        $0.isScrollEnabled = false
+    }
+    
+    private let plusOrMinusList: [String] = ["+", "-", "-", "+", "+", "-", "+", "-"]
+    
+    private let plusOfMinusColor: [UIColor] = [.plusColor, .minusColor, .minusColor, .plusColor, .plusColor, .minusColor, .plusColor, .minusColor]
+    
+    private let dateList: [String] = ["2021년 11월 19일", "2021년 11월 15일", "2021년 11월 10일", "2021년 11월 10일", "2021년 10월 23일", "2021년 10월 16일", "2021년 9월 29일", "2021년 9월 29일"]
+    
+    private let locationList: [String] = ["광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구"]
+    
+    private let energyList: [String] = ["230kwh", "180kwh", "340kwh", "230kwh", "130kwh", "280kwh", "90kwh", "300kwh"]
     
     private let tabBar = TabBar().then {
         $0.mainButton.addTarget(self, action: #selector(onTapMain), for: .touchUpInside)
@@ -57,12 +95,21 @@ class HistoryViewController: UIViewController {
         addView()
         cornerRadius()
         location()
+        tableViewSetting()
+        
+        nothingLabel.isHidden = true
+        nothingImage.isHidden = true
     }
     
     // MARK: - Add View
     
     private func addView(){
         view.addSubview(tabBar)
+        view.addSubview(homeButton)
+        view.addSubview(titleLabel)
+        view.addSubview(nothingLabel)
+        view.addSubview(nothingImage)
+        view.addSubview(histotyTableView)
     }
     
     // MARK: - Corner Radius
@@ -80,6 +127,37 @@ class HistoryViewController: UIViewController {
             make.width.equalToSuperview()
             make.height.equalToSuperview().dividedBy(5.31)
         }
+        
+        homeButton.snp.makeConstraints { make in
+            make.width.equalToSuperview().dividedBy(12.5)
+            make.height.equalToSuperview().dividedBy(25.38)
+            make.right.equalToSuperview().offset(-self.view.frame.width/22.06)
+            make.top.equalToSuperview().offset(self.view.frame.height/14.76)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(self.view.frame.height/6.88)
+            make.left.equalToSuperview().offset(self.view.frame.width/5.07)
+        }
+        
+        nothingLabel.snp.makeConstraints { make in
+            make.left.equalTo(titleLabel)
+            make.top.equalTo(titleLabel.snp.bottom).offset(self.view.frame.height/35.30)
+        }
+        
+        nothingImage.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(nothingLabel.snp.bottom).offset(self.view.frame.height/9.50)
+            make.width.equalToSuperview().dividedBy(1.51)
+            make.height.equalToSuperview().dividedBy(3.36)
+        }
+        
+        histotyTableView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(self.view.frame.height/23.88)
+            make.width.equalToSuperview().dividedBy(1.25)
+            make.height.equalTo((self.view.frame.height/14.25)*8)
+            make.centerX.equalToSuperview()
+        }
     }
     
     private func tabBarSetting(){
@@ -92,6 +170,43 @@ class HistoryViewController: UIViewController {
         tabBar.pinkTabBarSetting(screenHeight: self.view.frame.height, screenWidth: self.view.frame.width)
     }
     
+    private func tableViewSetting(){
+        histotyTableView.dataSource = self
+        histotyTableView.delegate = self
+        histotyTableView.sectionHeaderTopPadding = 7
+        
+        histotyTableView.register(HistoryTableViewCell.self, forCellReuseIdentifier: HistoryTableViewCell.HistoryTableViewCellIdentifier)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return plusOrMinusList.count
+    }
+        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableViewCell") as! HistoryTableViewCell
+        cell.plusOrMinus.text = plusOrMinusList[indexPath.row]
+        cell.plusOrMinus.textColor = plusOfMinusColor[indexPath.row]
+        cell.dateLabel.text = dateList[indexPath.row]
+        cell.locationLabel.text = locationList[indexPath.row]
+        cell.energyLabel.text = energyList[indexPath.row]
+        
+        if cell.plusOrMinus.textColor == .plusColor {
+            cell.energyLabel.textColor = .plusEnergyColor
+        } else {
+            cell.energyLabel.textColor = .minusEnergyColor
+        }
+        
+        cell.selectionStyle = .none
+        return cell
+    }
+        
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.view.frame.height/16.24
+    }
+            
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
 }
 
 //MARK: - Preview
