@@ -51,6 +51,37 @@ class HistoryTableViewCell: UITableViewCell {
     }
 
     func configureUI(){
+        let bounds = contentView.bounds
+        contentView.addSubview(plusOrMinus)
+        contentView.addSubview(dateLabel)
+        contentView.addSubview(locationLabel)
+        contentView.addSubview(energyLabel)
         
+        contentView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.29)
+        }
+        
+        plusOrMinus.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(bounds.width/12.61)
+        }
+        
+        dateLabel.snp.makeConstraints { make in
+            make.left.equalTo(plusOrMinus.snp.right).offset(bounds.width/22.31)
+            make.top.equalToSuperview().offset(bounds.height/5)
+        }
+        
+        locationLabel.snp.makeConstraints { make in
+            make.left.equalTo(dateLabel)
+            make.top.equalTo(dateLabel.snp.bottom)
+        }
+        
+        energyLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().offset(-bounds.width/12.08)
+        }
     }
 }
