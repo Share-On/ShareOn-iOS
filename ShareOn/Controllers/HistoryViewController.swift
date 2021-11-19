@@ -36,6 +36,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     private let histotyTableView = UITableView().then {
         $0.separatorStyle = .none
         $0.showsVerticalScrollIndicator = false
+        $0.backgroundColor = .clear
     }
     
     private let plusOrMinusList: [String] = ["+", "-", "-", "+", "+", "-", "+", "-"]
@@ -93,6 +94,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         addView()
         cornerRadius()
         location()
+        tableViewSetting()
         
         nothingLabel.isHidden = true
         nothingImage.isHidden = true
@@ -106,6 +108,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         view.addSubview(titleLabel)
         view.addSubview(nothingLabel)
         view.addSubview(nothingImage)
+        view.addSubview(histotyTableView)
     }
     
     // MARK: - Corner Radius
@@ -147,6 +150,13 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             make.width.equalToSuperview().dividedBy(1.51)
             make.height.equalToSuperview().dividedBy(3.36)
         }
+        
+        histotyTableView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(self.view.frame.height/23.88)
+            make.width.equalToSuperview().dividedBy(1.25)
+            make.height.equalTo((self.view.frame.height/14.25)*8)
+            make.centerX.equalToSuperview()
+        }
     }
     
     private func tabBarSetting(){
@@ -162,6 +172,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     private func tableViewSetting(){
         histotyTableView.dataSource = self
         histotyTableView.delegate = self
+        histotyTableView.sectionHeaderTopPadding = 7
         
         histotyTableView.register(HistoryTableViewCell.self, forCellReuseIdentifier: HistoryTableViewCell.HistoryTableViewCellIdentifier)
     }
