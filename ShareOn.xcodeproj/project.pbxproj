@@ -12,6 +12,8 @@
 		AA5D6B9D2715ADDF0051FE18 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5D6B9C2715ADDF0051FE18 /* MainViewController.swift */; };
 		AA5D6B9F2715C6110051FE18 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5D6B9E2715C6110051FE18 /* TabBar.swift */; };
 		AAA1D060274735D600BD446A /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D05F274735D600BD446A /* HistoryTableViewCell.swift */; };
+		AAA1D0642749265E00BD446A /* PlusEnergyAlterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D0632749265E00BD446A /* PlusEnergyAlterView.swift */; };
+		AAA1D0662749267200BD446A /* MinusEnergyAlterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA1D0652749267200BD446A /* MinusEnergyAlterView.swift */; };
 		AAAA0F012739406900DBCA68 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA0F002739406900DBCA68 /* LocationViewController.swift */; };
 		AAAA0F032739410C00DBCA68 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA0F022739410C00DBCA68 /* HistoryViewController.swift */; };
 		AAAA0F052739414600DBCA68 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA0F042739414600DBCA68 /* SettingViewController.swift */; };
@@ -37,6 +39,8 @@
 		AA5D6B9C2715ADDF0051FE18 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AA5D6B9E2715C6110051FE18 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		AAA1D05F274735D600BD446A /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		AAA1D0632749265E00BD446A /* PlusEnergyAlterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlusEnergyAlterView.swift; path = Cells/PlusEnergyAlterView.swift; sourceTree = "<group>"; };
+		AAA1D0652749267200BD446A /* MinusEnergyAlterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinusEnergyAlterView.swift; sourceTree = "<group>"; };
 		AAAA0F002739406900DBCA68 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		AAAA0F022739410C00DBCA68 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		AAAA0F042739414600DBCA68 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -149,10 +153,12 @@
 			isa = PBXGroup;
 			children = (
 				AAA1D05E274735A600BD446A /* Cells */,
+				AAA1D0632749265E00BD446A /* PlusEnergyAlterView.swift */,
 				AAE627FB2712963300FD1BAE /* UserInfoPutContainerView.swift */,
 				AA5D6B9A271482E10051FE18 /* DeviceView.swift */,
 				AA5D6B9E2715C6110051FE18 /* TabBar.swift */,
 				AAAA0F42273C937900DBCA68 /* MonthOfEnergyAlterView.swift.swift */,
+				AAA1D0652749267200BD446A /* MinusEnergyAlterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -307,11 +313,13 @@
 				AAAA0F43273C937900DBCA68 /* MonthOfEnergyAlterView.swift.swift in Sources */,
 				AAE627FC2712963300FD1BAE /* UserInfoPutContainerView.swift in Sources */,
 				AA5D6B9D2715ADDF0051FE18 /* MainViewController.swift in Sources */,
+				AAA1D0642749265E00BD446A /* PlusEnergyAlterView.swift in Sources */,
 				AA5D6B9927140DD50051FE18 /* DeviceLinkageViewController.swift in Sources */,
 				AA5D6B9F2715C6110051FE18 /* TabBar.swift in Sources */,
 				AA5D6B9B271482E10051FE18 /* DeviceView.swift in Sources */,
 				AAAA0F052739414600DBCA68 /* SettingViewController.swift in Sources */,
 				AAAA0F032739410C00DBCA68 /* HistoryViewController.swift in Sources */,
+				AAA1D0662749267200BD446A /* MinusEnergyAlterView.swift in Sources */,
 				AAE627E92710165800FD1BAE /* LoginViewController.swift in Sources */,
 				AAA1D060274735D600BD446A /* HistoryTableViewCell.swift in Sources */,
 				AAE628002712D53000FD1BAE /* SignUpInfoViewController.swift in Sources */,
