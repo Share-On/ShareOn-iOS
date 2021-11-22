@@ -45,6 +45,8 @@ class LocationViewController: UIViewController {
     }
     
     private let alterView = MonthOfEnergyAlterView()
+    private let plusAlter = PlusEnergyAlterView()
+    private let minusAlter = MinusEnergyAlterView()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -78,6 +80,8 @@ class LocationViewController: UIViewController {
     private func configureUI(){
         view.backgroundColor = .white
         energyAlterViewSetting()
+        plusAlterViewSetting()
+        minusAlterViewSetting()
         addView()
         cornerRadius()
         location()
@@ -93,8 +97,12 @@ class LocationViewController: UIViewController {
         view.addSubview(allEnergy)
         view.addSubview(pmLabel)
         view.addSubview(alterView)
+        view.addSubview(plusAlter)
+        view.addSubview(minusAlter)
 
         pmLabel.isHidden = true
+        alterView.isHidden = true
+        plusAlter.isHidden = true
     }
     
     // MARK: - Corner Radius
@@ -144,6 +152,18 @@ class LocationViewController: UIViewController {
             make.width.equalToSuperview().dividedBy(1.21)
             make.height.equalToSuperview().dividedBy(5.64)
         }
+        
+        plusAlter.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.15)
+            make.height.equalToSuperview().dividedBy(5.97)
+        }
+        
+        minusAlter.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.15)
+            make.height.equalToSuperview().dividedBy(5.97)
+        }
     }
 
     private func energyAlterViewSetting(){
@@ -151,7 +171,7 @@ class LocationViewController: UIViewController {
         alterView.layer.cornerRadius = 10
         alterView.layer.shadowColor = UIColor.lightGray.cgColor
         alterView.layer.shadowOffset = CGSize(width: 0, height: 4)
-        alterView.layer.shadowRadius = 20
+        alterView.layer.shadowRadius = 10
         alterView.layer.shadowOpacity = 0.3
         
         alterView.addSubview(alterView.monthLabel)
@@ -164,11 +184,33 @@ class LocationViewController: UIViewController {
     }
     
     private func plusAlterViewSetting(){
+        plusAlter.backgroundColor = .white
+        plusAlter.layer.cornerRadius = 25
+        plusAlter.layer.shadowColor = UIColor.lightGray.cgColor
+        plusAlter.layer.shadowOffset = CGSize(width: 0, height: 4)
+        plusAlter.layer.shadowRadius = 25
+        plusAlter.layer.shadowOpacity = 0.3
         
+        plusAlter.addSubview(plusAlter.energyTf)
+        plusAlter.addSubview(plusAlter.cancleButton)
+        plusAlter.addSubview(plusAlter.okButton)
+        
+        plusAlter.layoutSetting(sw: self.view.frame.width, sh: self.view.frame.height)
     }
     
     private func minusAlterViewSetting(){
+        minusAlter.backgroundColor = .white
+        minusAlter.layer.cornerRadius = 25
+        minusAlter.layer.shadowColor = UIColor.lightGray.cgColor
+        minusAlter.layer.shadowOffset = CGSize(width: 0, height: 4)
+        minusAlter.layer.shadowRadius = 25
+        minusAlter.layer.shadowOpacity = 0.3
         
+        minusAlter.addSubview(minusAlter.energyTf)
+        minusAlter.addSubview(minusAlter.cancleButton)
+        minusAlter.addSubview(minusAlter.okButton)
+        
+        minusAlter.layoutSetting(sw: self.view.frame.width, sh: self.view.frame.height)
     }
 }
 
