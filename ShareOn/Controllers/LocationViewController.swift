@@ -44,7 +44,9 @@ class LocationViewController: UIViewController {
         $0.dynamicFont(fontSize: 18, currentFontName: "AlfaSlabOne-Regular")
     }
     
-//    private let alterView = MonthOfEnergyAlterView()
+    private let alterView = MonthOfEnergyAlterView()
+    private let plusAlter = PlusEnergyAlterView()
+    private let minusAlter = MinusEnergyAlterView()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -77,7 +79,9 @@ class LocationViewController: UIViewController {
     //MARK: - Helpers
     private func configureUI(){
         view.backgroundColor = .white
-//        energyAlterViewSetting()
+        energyAlterViewSetting()
+        plusAlterViewSetting()
+        minusAlterViewSetting()
         addView()
         cornerRadius()
         location()
@@ -92,9 +96,13 @@ class LocationViewController: UIViewController {
         view.addSubview(plusButton)
         view.addSubview(allEnergy)
         view.addSubview(pmLabel)
-//        view.addSubview(alterView)
+        view.addSubview(alterView)
+        view.addSubview(plusAlter)
+        view.addSubview(minusAlter)
 
         pmLabel.isHidden = true
+        alterView.isHidden = true
+        plusAlter.isHidden = true
     }
     
     // MARK: - Corner Radius
@@ -138,33 +146,71 @@ class LocationViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalTo(allEnergy.snp.bottom)
         }
+        
+        alterView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.21)
+            make.height.equalToSuperview().dividedBy(5.64)
+        }
+        
+        plusAlter.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.15)
+            make.height.equalToSuperview().dividedBy(5.97)
+        }
+        
+        minusAlter.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.15)
+            make.height.equalToSuperview().dividedBy(5.97)
+        }
     }
 
-//    private func energyAlterViewSetting(){
-//        alterView.snp.makeConstraints { make in
-//            make.center.equalToSuperview()
-//            make.width.equalToSuperview().dividedBy(1.21)
-//            make.height.equalToSuperview().dividedBy(5.64)
-//        }
-//
-//        alterView.energyGraph.snp.makeConstraints { make in
-//            make.centerY.equalToSuperview()
-//            make.width.equalToSuperview().dividedBy(6.25)
-//            make.height.equalTo(alterView.snp.width)
-//            make.left.equalTo(alterView).offset(self.view.frame.width/12.5)
-//        }
-//
-//        alterView.monthLabel.snp.makeConstraints { make in
-//            make.top.equalToSuperview().offset(self.view.frame.height/23.2)
-//        }
-//    }
+    private func energyAlterViewSetting(){
+        alterView.backgroundColor = .white
+        alterView.layer.cornerRadius = 10
+        alterView.layer.shadowColor = UIColor.lightGray.cgColor
+        alterView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        alterView.layer.shadowRadius = 10
+        alterView.layer.shadowOpacity = 0.3
+        
+        alterView.addSubview(alterView.monthLabel)
+        alterView.addSubview(alterView.energyGraph)
+        alterView.addSubview(alterView.energyLabel)
+        alterView.addSubview(alterView.cancleButton)
+        alterView.addSubview(alterView.okButton)
+        
+        alterView.layoutSetting(sw: self.view.frame.width, sh: self.view.frame.height)
+    }
     
     private func plusAlterViewSetting(){
+        plusAlter.backgroundColor = .white
+        plusAlter.layer.cornerRadius = 25
+        plusAlter.layer.shadowColor = UIColor.lightGray.cgColor
+        plusAlter.layer.shadowOffset = CGSize(width: 0, height: 4)
+        plusAlter.layer.shadowRadius = 25
+        plusAlter.layer.shadowOpacity = 0.3
         
+        plusAlter.addSubview(plusAlter.energyTf)
+        plusAlter.addSubview(plusAlter.cancleButton)
+        plusAlter.addSubview(plusAlter.okButton)
+        
+        plusAlter.layoutSetting(sw: self.view.frame.width, sh: self.view.frame.height)
     }
     
     private func minusAlterViewSetting(){
+        minusAlter.backgroundColor = .white
+        minusAlter.layer.cornerRadius = 25
+        minusAlter.layer.shadowColor = UIColor.lightGray.cgColor
+        minusAlter.layer.shadowOffset = CGSize(width: 0, height: 4)
+        minusAlter.layer.shadowRadius = 25
+        minusAlter.layer.shadowOpacity = 0.3
         
+        minusAlter.addSubview(minusAlter.energyTf)
+        minusAlter.addSubview(minusAlter.cancleButton)
+        minusAlter.addSubview(minusAlter.okButton)
+        
+        minusAlter.layoutSetting(sw: self.view.frame.width, sh: self.view.frame.height)
     }
 }
 

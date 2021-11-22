@@ -27,6 +27,7 @@ class HistoryTableViewCell: UITableViewCell {
     
     let locationLabel = UILabel().then {
         $0.text = "광주광역시 광산구"
+        $0.textColor = .black
         $0.dynamicFont(fontSize: 14, currentFontName: "AppleSDGothicNeo-Thin")
     }
     
@@ -57,7 +58,7 @@ class HistoryTableViewCell: UITableViewCell {
 
     func configureUI(){
         let bounds = contentView.bounds
-        
+        contentView.backgroundColor = .white
         layer.shadowColor = UIColor.rgba(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
         layer.shadowOpacity = 1.5
         layer.shadowRadius = 10

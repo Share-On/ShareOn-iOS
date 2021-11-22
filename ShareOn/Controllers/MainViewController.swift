@@ -46,7 +46,7 @@ class MainViewController: UIViewController {
     }
     
     private let dateLabel1 = UILabel().then {
-        $0.text = "Utill September, 29"
+        $0.text = "Utill November, 24"
         $0.textColor = .rgb(red: 142, green: 142, blue: 142)
         $0.dynamicFont(fontSize: 14, currentFontName: "AppleSDGothicNeo-Regular")
     }
@@ -68,9 +68,17 @@ class MainViewController: UIViewController {
     }
     
     private let dateLabel2 = UILabel().then {
-        $0.text = "Utill September, 29"
+        $0.text = "Utill November, 24"
         $0.textColor = .rgb(red: 142, green: 142, blue: 142)
         $0.dynamicFont(fontSize: 14, currentFontName: "AppleSDGothicNeo-Regular")
+    }
+    
+    private let energyGraph1 = UIImageView().then {
+        $0.image = UIImage(named: "ShareOn-Graph1")
+    }
+    
+    private let energyGraph2 = UIImageView().then {
+        $0.image = UIImage(named: "ShareOn-Graph2")
     }
     
     //MARK: - Lifecycle
@@ -126,6 +134,8 @@ class MainViewController: UIViewController {
         view.addSubview(dividedView2)
         view.addSubview(saveEnergy)
         view.addSubview(dateLabel2)
+        view.addSubview(energyGraph1)
+        view.addSubview(energyGraph2)
     }
     
     // MARK: - Corner Radius
@@ -198,6 +208,20 @@ class MainViewController: UIViewController {
         dateLabel2.snp.makeConstraints { make in
             make.centerX.equalTo(saveEnergy)
             make.top.equalTo(saveEnergy.snp.bottom).offset(self.view.frame.height/270.67)
+        }
+        
+        energyGraph1.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(self.view.frame.width/7.8)
+            make.top.equalTo(dividedView).offset(self.view.frame.height/20.3)
+            make.width.equalToSuperview().dividedBy(2.72)
+            make.height.equalToSuperview().dividedBy(5.88)
+        }
+        
+        energyGraph2.snp.makeConstraints { make in
+            make.left.equalTo(energyGraph1)
+            make.top.equalTo(dividedView2).offset(self.view.frame.height/20.3)
+            make.width.equalTo(energyGraph1)
+            make.height.equalTo(energyGraph1)
         }
     }
     
