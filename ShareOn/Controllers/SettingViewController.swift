@@ -12,6 +12,10 @@ import Then
 class SettingViewController: UIViewController {
     //MARK: - Properties
     
+    private let backSetting = UIImageView().then {
+        $0.image = UIImage(named: "ShareOn-MyPage")
+    }
+    
     private let tabBar = TabBar().then {
         $0.mainButton.addTarget(self, action: #selector(onTapMain), for: .touchUpInside)
         $0.locationButton.addTarget(self, action: #selector(onTapLocation), for: .touchUpInside)
@@ -62,7 +66,8 @@ class SettingViewController: UIViewController {
     // MARK: - Add View
     
     private func addView(){
-        
+        view.addSubview(backSetting)
+        view.addSubview(tabBar)
     }
     
     // MARK: - Corner Radius
@@ -74,7 +79,16 @@ class SettingViewController: UIViewController {
     // MARK: - Location
     
     private func location(){
+        backSetting.snp.makeConstraints { make in
+            make.top.bottom.left.right.equalToSuperview()
+        }
         
+        tabBar.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalToSuperview().dividedBy(10.02)
+        }
     }
     
     private func tabBarSetting(){
