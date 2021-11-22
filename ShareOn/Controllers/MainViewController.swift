@@ -73,6 +73,14 @@ class MainViewController: UIViewController {
         $0.dynamicFont(fontSize: 14, currentFontName: "AppleSDGothicNeo-Regular")
     }
     
+    private let energyGraph1 = UIImageView().then {
+        $0.image = UIImage(named: "ShareOn-Graph1")
+    }
+    
+    private let energyGraph2 = UIImageView().then {
+        $0.image = UIImage(named: "ShareOn-Graph2")
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,6 +134,8 @@ class MainViewController: UIViewController {
         view.addSubview(dividedView2)
         view.addSubview(saveEnergy)
         view.addSubview(dateLabel2)
+        view.addSubview(energyGraph1)
+        view.addSubview(energyGraph2)
     }
     
     // MARK: - Corner Radius
@@ -198,6 +208,13 @@ class MainViewController: UIViewController {
         dateLabel2.snp.makeConstraints { make in
             make.centerX.equalTo(saveEnergy)
             make.top.equalTo(saveEnergy.snp.bottom).offset(self.view.frame.height/270.67)
+        }
+        
+        energyGraph1.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(self.view.frame.width/7.8)
+            make.top.equalTo(dividedView).offset(self.view.frame.height/20.3)
+            make.width.equalToSuperview().dividedBy(2.72)
+            make.height.equalToSuperview().dividedBy(5.88)
         }
     }
     
