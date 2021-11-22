@@ -41,10 +41,11 @@ class MonthOfEnergyAlterView: UIView {
     }
     
     func layoutSetting(sw: CGFloat, sh: CGFloat){
-           
         monthLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(sh/23.2)
             make.left.equalToSuperview().offset(sw/3.57)
+            make.width.equalTo(sw/1.88)
+            make.height.equalTo(sh/40.6)
         }
         
         energyGraph.snp.makeConstraints { make in
@@ -55,8 +56,10 @@ class MonthOfEnergyAlterView: UIView {
         }
         
         energyLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(monthLabel)
+            make.centerX.equalTo(monthLabel)
             make.top.equalTo(monthLabel.snp.bottom).offset(sh/270.67)
+            make.width.equalTo(sw/3.13)
+            make.height.equalTo(sh/21.95)
         }
         
         cancleButton.snp.makeConstraints { make in

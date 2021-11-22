@@ -147,8 +147,13 @@ class LocationViewController: UIViewController {
     }
 
     private func energyAlterViewSetting(){
-        
         alterView.backgroundColor = .white
+        alterView.layer.cornerRadius = 10
+        alterView.layer.shadowColor = UIColor.lightGray.cgColor
+        alterView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        alterView.layer.shadowRadius = 20
+        alterView.layer.shadowOpacity = 0.3
+        
         alterView.addSubview(alterView.monthLabel)
         alterView.addSubview(alterView.energyGraph)
         alterView.addSubview(alterView.energyLabel)
