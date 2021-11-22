@@ -40,34 +40,40 @@ class MonthOfEnergyAlterView: UIView {
         $0.dynamicFont(fontSize: 11, currentFontName: "AppleSDGothicNeo-Medium")
     }
     
-    let bound: CGRect = UIScreen.main.bounds
+    func layoutSetting(sw: CGFloat, sh: CGFloat){
+        monthLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(sh/23.2)
+            make.left.equalToSuperview().offset(sw/3.57)
+            make.width.equalTo(sw/1.88)
+            make.height.equalTo(sh/40.6)
+        }
         
-    //MARK: - LifeCycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+        energyGraph.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(sw/12.5)
+            make.width.equalTo(sw/6.25)
+            make.height.equalTo(sh/13.53)
+        }
         
-        layoutSetting()
-    }
+        energyLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(monthLabel)
+            make.top.equalTo(monthLabel.snp.bottom).offset(sh/270.67)
+            make.width.equalTo(sw/3.13)
+            make.height.equalTo(sh/21.95)
+        }
         
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        cancleButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(sh/45.11)
+            make.left.equalToSuperview().offset(sw/2.82)
+            make.width.equalTo(sw/5.36)
+            make.height.equalTo(sh/29)
+        }
         
-        layoutSetting()
-    }
-    
-    func layoutSetting(){
-        self.layer.cornerRadius = 10
-        self.layer.shadowColor = UIColor.lightGray.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 4)
-        self.layer.shadowRadius = 20
-        self.layer.shadowOpacity = 0.3
-        self.backgroundColor = .white
-            
-        self.addSubview(monthLabel)
-        self.addSubview(energyGraph)
-        self.addSubview(energyLabel)
-        self.addSubview(cancleButton)
-        self.addSubview(okButton)
+        okButton.snp.makeConstraints { make in
+            make.top.equalTo(cancleButton)
+            make.left.equalTo(cancleButton.snp.right).offset(23.44)
+            make.width.height.equalTo(cancleButton)
+        }
     }
 
 }
