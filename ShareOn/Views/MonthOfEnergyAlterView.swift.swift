@@ -55,7 +55,7 @@ class MonthOfEnergyAlterView: UIView {
         layoutSetting()
     }
     
-    func layoutSetting(){
+    func layoutSetting(sw: CGFloat, sh: CGFloat){
         self.layer.cornerRadius = 10
         self.layer.shadowColor = UIColor.lightGray.cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 4)
@@ -68,6 +68,43 @@ class MonthOfEnergyAlterView: UIView {
         self.addSubview(energyLabel)
         self.addSubview(cancleButton)
         self.addSubview(okButton)
+        
+        alterView.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.21)
+            make.height.equalToSuperview().dividedBy(5.64)
+        }
+
+        alterView.energyGraph.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(6.25)
+            make.height.equalToSuperview().dividedBy(13.53)
+            make.left.equalToSuperview().offset(self.view.frame.width/6.25)
+        }
+
+        monthLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(self.view.frame.height/23.2)
+            make.left.equalTo(alterView.energyGraph.snp.right).offset(self.view.frame.width/37.5)
+        }
+        
+        energyLabel.snp.makeConstraints { make in
+            make.top.equalTo(alterView.monthLabel.snp.bottom).offset(self.view.frame.height/270.67)
+            make.centerX.equalTo(alterView.monthLabel)
+        }
+        
+        cancleButton.snp.makeConstraints { make in
+            make.left.equalTo(alterView.energyLabel).offset(self.view.frame.width/125)
+            make.top.equalTo(alterView.energyLabel.snp.bottom).offset(self.view.frame.height/90.2)
+            make.width.equalToSuperview().dividedBy(5.36)
+            make.height.equalToSuperview().dividedBy(29)
+        }
+        
+        okButton.snp.makeConstraints { make in
+            make.left.equalTo(alterView.cancleButton.snp.right).offset(self.view.frame.width/23.48)
+            make.top.equalTo(alterView.cancleButton)
+            make.width.equalTo(alterView.cancleButton)
+            make.height.equalTo(alterView.cancleButton)
+        }
     }
 
 }
