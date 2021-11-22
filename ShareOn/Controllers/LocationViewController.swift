@@ -138,9 +138,23 @@ class LocationViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalTo(allEnergy.snp.bottom)
         }
+        
+        alterView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.21)
+            make.height.equalToSuperview().dividedBy(5.64)
+        }
     }
 
     private func energyAlterViewSetting(){
+        
+        alterView.backgroundColor = .white
+        alterView.addSubview(alterView.monthLabel)
+        alterView.addSubview(alterView.energyGraph)
+        alterView.addSubview(alterView.energyLabel)
+        alterView.addSubview(alterView.cancleButton)
+        alterView.addSubview(alterView.okButton)
+        
         alterView.layoutSetting(sw: self.view.frame.width, sh: self.view.frame.height)
     }
     

@@ -40,70 +40,36 @@ class MonthOfEnergyAlterView: UIView {
         $0.dynamicFont(fontSize: 11, currentFontName: "AppleSDGothicNeo-Medium")
     }
     
-    let bound: CGRect = UIScreen.main.bounds
-        
-    //MARK: - LifeCycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        layoutSetting()
-    }
-        
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-        
-        layoutSetting()
-    }
-    
     func layoutSetting(sw: CGFloat, sh: CGFloat){
-        self.layer.cornerRadius = 10
-        self.layer.shadowColor = UIColor.lightGray.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 4)
-        self.layer.shadowRadius = 20
-        self.layer.shadowOpacity = 0.3
-        self.backgroundColor = .white
-            
-        self.addSubview(monthLabel)
-        self.addSubview(energyGraph)
-        self.addSubview(energyLabel)
-        self.addSubview(cancleButton)
-        self.addSubview(okButton)
-        
-        alterView.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-            make.width.equalToSuperview().dividedBy(1.21)
-            make.height.equalToSuperview().dividedBy(5.64)
-        }
-
-        alterView.energyGraph.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.width.equalToSuperview().dividedBy(6.25)
-            make.height.equalToSuperview().dividedBy(13.53)
-            make.left.equalToSuperview().offset(self.view.frame.width/6.25)
-        }
-
+           
         monthLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(self.view.frame.height/23.2)
-            make.left.equalTo(alterView.energyGraph.snp.right).offset(self.view.frame.width/37.5)
+            make.top.equalToSuperview().offset(sh/23.2)
+            make.left.equalToSuperview().offset(sw/3.57)
+        }
+        
+        energyGraph.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(sw/12.5)
+            make.width.equalTo(sw/6.25)
+            make.height.equalTo(sh/13.53)
         }
         
         energyLabel.snp.makeConstraints { make in
-            make.top.equalTo(alterView.monthLabel.snp.bottom).offset(self.view.frame.height/270.67)
-            make.centerX.equalTo(alterView.monthLabel)
+            make.centerY.equalTo(monthLabel)
+            make.top.equalTo(monthLabel.snp.bottom).offset(sh/270.67)
         }
         
         cancleButton.snp.makeConstraints { make in
-            make.left.equalTo(alterView.energyLabel).offset(self.view.frame.width/125)
-            make.top.equalTo(alterView.energyLabel.snp.bottom).offset(self.view.frame.height/90.2)
-            make.width.equalToSuperview().dividedBy(5.36)
-            make.height.equalToSuperview().dividedBy(29)
+            make.bottom.equalToSuperview().inset(sh/45.11)
+            make.left.equalToSuperview().offset(sw/2.82)
+            make.width.equalTo(sw/5.36)
+            make.height.equalTo(sh/29)
         }
         
         okButton.snp.makeConstraints { make in
-            make.left.equalTo(alterView.cancleButton.snp.right).offset(self.view.frame.width/23.48)
-            make.top.equalTo(alterView.cancleButton)
-            make.width.equalTo(alterView.cancleButton)
-            make.height.equalTo(alterView.cancleButton)
+            make.top.equalTo(cancleButton)
+            make.left.equalTo(cancleButton.snp.right).offset(23.44)
+            make.width.height.equalTo(cancleButton)
         }
     }
 
