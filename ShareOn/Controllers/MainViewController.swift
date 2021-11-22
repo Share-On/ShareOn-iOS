@@ -46,7 +46,7 @@ class MainViewController: UIViewController {
     }
     
     private let dateLabel1 = UILabel().then {
-        $0.text = "Utill September, 29"
+        $0.text = "Utill November, 24"
         $0.textColor = .rgb(red: 142, green: 142, blue: 142)
         $0.dynamicFont(fontSize: 14, currentFontName: "AppleSDGothicNeo-Regular")
     }
@@ -68,7 +68,7 @@ class MainViewController: UIViewController {
     }
     
     private let dateLabel2 = UILabel().then {
-        $0.text = "Utill September, 29"
+        $0.text = "Utill November, 24"
         $0.textColor = .rgb(red: 142, green: 142, blue: 142)
         $0.dynamicFont(fontSize: 14, currentFontName: "AppleSDGothicNeo-Regular")
     }
