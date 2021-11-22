@@ -216,6 +216,13 @@ class MainViewController: UIViewController {
             make.width.equalToSuperview().dividedBy(2.72)
             make.height.equalToSuperview().dividedBy(5.88)
         }
+        
+        energyGraph2.snp.makeConstraints { make in
+            make.left.equalTo(energyGraph1)
+            make.top.equalTo(dividedView2).offset(self.view.frame.height/20.3)
+            make.width.equalTo(energyGraph1)
+            make.height.equalTo(energyGraph1)
+        }
     }
     
     private func tabBarSetting(){
