@@ -14,6 +14,7 @@ class LocationViewController: UIViewController {
     
     var totalEnergy:Int = 1230
     var pmValue:Int = 230
+    var possibleValue:Int = 230
     
     private let backImage = UIImageView().then {
         $0.image = UIImage(named: "ShareOn-LocationBack")
@@ -106,6 +107,8 @@ class LocationViewController: UIViewController {
         pmLabel.isHidden = false
         totalEnergy = totalEnergy-pmValue
         allEnergy.text = String(totalEnergy) + "kwh"
+        possibleValue = possibleValue - pmValue
+        alterView.energyLabel.text = String(possibleValue) + "kwh"
     }
     
     @objc
@@ -129,6 +132,7 @@ class LocationViewController: UIViewController {
     //MARK: - Helpers
     private func configureUI(){
         view.backgroundColor = .white
+        keyboardTypeSetting()
         energyAlterViewSetting()
         plusAlterViewSetting()
         minusAlterViewSetting()
@@ -262,6 +266,20 @@ class LocationViewController: UIViewController {
         minusAlter.addSubview(minusAlter.okButton)
         
         minusAlter.layoutSetting(sw: self.view.frame.width, sh: self.view.frame.height)
+    }
+    
+    //MARK: - KeyboardType Setting
+    
+    private func keyboardTypeSetting(){
+        minusAlter.energyTf.keyboardType = .numberPad
+        plusAlter.energyTf.keyboardType = .numberPad
+    }
+    
+    //MARK: - textField Point Set
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        minusAlter.energyTf.resignFirstResponder()
+        plusAlter.energyTf.resignFirstResponder()
     }
 }
 
