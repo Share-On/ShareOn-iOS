@@ -12,7 +12,8 @@ import Then
 class LocationViewController: UIViewController {
     //MARK: - Properties
     
-    var pmValue:String = "230kwh"
+    var totalEnergy:Int = 1230
+    var pmValue:Int = 230
     
     private let backImage = UIImageView().then {
         $0.image = UIImage(named: "ShareOn-LocationBack")
@@ -34,13 +35,13 @@ class LocationViewController: UIViewController {
         $0.addTarget(self, action: #selector(onTapPlus), for: .touchUpInside)
     }
     
-    private let allEnergy = UILabel().then {
-        $0.text = "1230kwh"
+    lazy var allEnergy = UILabel().then {
+        $0.text = String(totalEnergy) + "kwh"
         $0.dynamicFont(fontSize: 30, currentFontName: "AlfaSlabOne-Regular")
     }
     
     lazy var pmLabel = UILabel().then {
-        $0.text = pmValue
+        $0.text = String(pmValue)
         $0.dynamicFont(fontSize: 18, currentFontName: "AlfaSlabOne-Regular")
     }
     
@@ -99,19 +100,23 @@ class LocationViewController: UIViewController {
     @objc
     private func onMOk(){
         minusAlter.isHidden = true
-        pmValue = minusAlter.energyTf.text ?? "0"
-        pmLabel.text = "-" + pmValue + "kwh"
+        pmValue = Int(minusAlter.energyTf.text!) ?? 0
+        pmLabel.text = "-" + String(pmValue) + "kwh"
         pmLabel.textColor = .rgb(red: 70, green: 150, blue: 225)
         pmLabel.isHidden = false
+        totalEnergy = totalEnergy-pmValue
+        allEnergy.text = String(totalEnergy) + "kwh"
     }
     
     @objc
     private func onPOk(){
         plusAlter.isHidden = true
-        pmValue = plusAlter.energyTf.text ?? "0" + "kwh"
-        pmLabel.text = "+" + pmValue + "kwh"
+        pmValue = Int(plusAlter.energyTf.text!) ?? 0
+        pmLabel.text = "+" + String(pmValue) + "kwh"
         pmLabel.textColor = .rgb(red: 227, green: 75, blue: 115)
         pmLabel.isHidden = false
+        totalEnergy = totalEnergy+pmValue
+        allEnergy.text = String(totalEnergy) + "kwh"
     }
     
     @objc
