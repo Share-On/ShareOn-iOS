@@ -43,11 +43,11 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private let plusOfMinusColor: [UIColor] = [.plusColor, .minusColor, .minusColor, .plusColor, .plusColor, .minusColor, .plusColor, .minusColor]
     
-    private let dateList: [String] = ["2021년 11월 19일", "2021년 11월 15일", "2021년 11월 10일", "2021년 11월 10일", "2021년 10월 23일", "2021년 10월 16일", "2021년 9월 29일", "2021년 9월 29일"]
+    private let dateList: [String] = ["2021년 11월 23일", "2021년 11월 23일", "2021년 11월 10일", "2021년 11월 10일", "2021년 10월 23일", "2021년 10월 16일", "2021년 9월 29일", "2021년 9월 29일"]
     
     private let locationList: [String] = ["광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구", "광주광역시 광산구"]
     
-    private let energyList: [String] = ["230kwh", "180kwh", "340kwh", "230kwh", "130kwh", "280kwh", "90kwh", "300kwh"]
+    private let energyList: [String] = ["100kwh", "120kwh", "340kwh", "230kwh", "130kwh", "280kwh", "90kwh", "300kwh"]
     
     private let energyColor: [UIColor] = [.plusEnergyColor, .minusEnergyColor, .minusEnergyColor, .plusEnergyColor, .plusEnergyColor, .minusEnergyColor, .plusEnergyColor, .minusEnergyColor]
     

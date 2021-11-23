@@ -12,7 +12,9 @@ import Then
 class LocationViewController: UIViewController {
     //MARK: - Properties
     
-    var pmValue:String = "230kwh"
+    var totalEnergy:Int = 1230
+    var pmValue:Int = 230
+    var possibleValue:Int = 230
     
     private let backImage = UIImageView().then {
         $0.image = UIImage(named: "ShareOn-LocationBack")
@@ -26,7 +28,7 @@ class LocationViewController: UIViewController {
     
     private let minusButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "ShareOn-MinusButton"), for: .normal)
-        $0.addTarget(self, action: #selector(onTapMinus), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(onTapEnergy), for: .touchUpInside)
     }
     
     private let plusButton = UIButton().then {
@@ -34,19 +36,28 @@ class LocationViewController: UIViewController {
         $0.addTarget(self, action: #selector(onTapPlus), for: .touchUpInside)
     }
     
-    private let allEnergy = UILabel().then {
-        $0.text = "1230kwh"
+    lazy var allEnergy = UILabel().then {
+        $0.text = String(totalEnergy) + "kwh"
         $0.dynamicFont(fontSize: 30, currentFontName: "AlfaSlabOne-Regular")
     }
     
     lazy var pmLabel = UILabel().then {
-        $0.text = pmValue
+        $0.text = String(pmValue)
         $0.dynamicFont(fontSize: 18, currentFontName: "AlfaSlabOne-Regular")
     }
     
-    private let alterView = MonthOfEnergyAlterView()
-    private let plusAlter = PlusEnergyAlterView()
-    private let minusAlter = MinusEnergyAlterView()
+    lazy var alterView = MonthOfEnergyAlterView().then {
+        $0.okButton.addTarget(self, action: #selector(onTapEOk), for: .touchUpInside)
+        $0.cancleButton.addTarget(self, action: #selector(onTapCancle), for: .touchUpInside)
+    }
+    lazy var plusAlter = PlusEnergyAlterView().then {
+        $0.cancleButton.addTarget(self, action: #selector(onTapCancle), for: .touchUpInside)
+        $0.okButton.addTarget(self, action: #selector(onPOk), for: .touchUpInside)
+    }
+    lazy var minusAlter = MinusEnergyAlterView().then{
+        $0.cancleButton.addTarget(self, action: #selector(onTapCancle), for: .touchUpInside)
+        $0.okButton.addTarget(self, action: #selector(onMOk), for: .touchUpInside)
+    }
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -63,22 +74,65 @@ class LocationViewController: UIViewController {
     }
     
     @objc
+    private func onTapEnergy(){
+        alterView.isHidden = false
+    }
+    
+    @objc
+    private func onTapEOk(){
+        minusAlter.energyTf.text = ""
+        alterView.isHidden = true
+        minusAlter.isHidden = false
+    }
+    
+    @objc
     private func onTapMinus(){
-        pmLabel.text = "-" + pmValue
-        pmLabel.textColor = .rgb(red: 70, green: 150, blue: 225)
-        pmLabel.isHidden = false
+        alterView.isHidden = true
+        minusAlter.isHidden = false
     }
     
     @objc
     private func onTapPlus(){
-        pmLabel.text = "+" + pmValue
+        plusAlter.energyTf.text = ""
+        alterView.isHidden = true
+        plusAlter.isHidden = false
+    }
+    
+    @objc
+    private func onMOk(){
+        minusAlter.isHidden = true
+        pmValue = Int(minusAlter.energyTf.text!) ?? 0
+        pmLabel.text = "-" + String(pmValue) + "kwh"
+        pmLabel.textColor = .rgb(red: 70, green: 150, blue: 225)
+        pmLabel.isHidden = false
+        totalEnergy = totalEnergy-pmValue
+        allEnergy.text = String(totalEnergy) + "kwh"
+        possibleValue = possibleValue - pmValue
+        alterView.energyLabel.text = String(possibleValue) + "kwh"
+    }
+    
+    @objc
+    private func onPOk(){
+        plusAlter.isHidden = true
+        pmValue = Int(plusAlter.energyTf.text!) ?? 0
+        pmLabel.text = "+" + String(pmValue) + "kwh"
         pmLabel.textColor = .rgb(red: 227, green: 75, blue: 115)
         pmLabel.isHidden = false
+        totalEnergy = totalEnergy+pmValue
+        allEnergy.text = String(totalEnergy) + "kwh"
+    }
+    
+    @objc
+    private func onTapCancle(){
+        alterView.isHidden = true
+        plusAlter.isHidden = true
+        minusAlter.isHidden = true
     }
     
     //MARK: - Helpers
     private func configureUI(){
         view.backgroundColor = .white
+        keyboardTypeSetting()
         energyAlterViewSetting()
         plusAlterViewSetting()
         minusAlterViewSetting()
@@ -103,6 +157,7 @@ class LocationViewController: UIViewController {
         pmLabel.isHidden = true
         alterView.isHidden = true
         plusAlter.isHidden = true
+        minusAlter.isHidden = true
     }
     
     // MARK: - Corner Radius
@@ -211,6 +266,20 @@ class LocationViewController: UIViewController {
         minusAlter.addSubview(minusAlter.okButton)
         
         minusAlter.layoutSetting(sw: self.view.frame.width, sh: self.view.frame.height)
+    }
+    
+    //MARK: - KeyboardType Setting
+    
+    private func keyboardTypeSetting(){
+        minusAlter.energyTf.keyboardType = .numberPad
+        plusAlter.energyTf.keyboardType = .numberPad
+    }
+    
+    //MARK: - textField Point Set
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        minusAlter.energyTf.resignFirstResponder()
+        plusAlter.energyTf.resignFirstResponder()
     }
 }
 
