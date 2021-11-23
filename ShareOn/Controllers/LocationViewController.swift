@@ -109,6 +109,7 @@ class LocationViewController: UIViewController {
         allEnergy.text = String(totalEnergy) + "kwh"
         possibleValue = possibleValue - pmValue
         alterView.energyLabel.text = String(possibleValue) + "kwh"
+        minusAlter.energyTf.resignFirstResponder()
     }
     
     @objc
@@ -120,6 +121,7 @@ class LocationViewController: UIViewController {
         pmLabel.isHidden = false
         totalEnergy = totalEnergy+pmValue
         allEnergy.text = String(totalEnergy) + "kwh"
+        plusAlter.energyTf.resignFirstResponder()
     }
     
     @objc
