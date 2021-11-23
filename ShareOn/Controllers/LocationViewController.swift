@@ -26,7 +26,7 @@ class LocationViewController: UIViewController {
     
     private let minusButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "ShareOn-MinusButton"), for: .normal)
-        $0.addTarget(self, action: #selector(onTapMinus), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(onTapEnergy), for: .touchUpInside)
     }
     
     private let plusButton = UIButton().then {
@@ -44,9 +44,18 @@ class LocationViewController: UIViewController {
         $0.dynamicFont(fontSize: 18, currentFontName: "AlfaSlabOne-Regular")
     }
     
-    private let alterView = MonthOfEnergyAlterView()
-    private let plusAlter = PlusEnergyAlterView()
-    private let minusAlter = MinusEnergyAlterView()
+    lazy var alterView = MonthOfEnergyAlterView().then {
+        $0.okButton.addTarget(self, action: #selector(onTapEOk), for: .touchUpInside)
+        $0.cancleButton.addTarget(self, action: #selector(onTapCancle), for: .touchUpInside)
+    }
+    lazy var plusAlter = PlusEnergyAlterView().then {
+        $0.cancleButton.addTarget(self, action: #selector(onTapCancle), for: .touchUpInside)
+        $0.okButton.addTarget(self, action: #selector(onPOk), for: .touchUpInside)
+    }
+    lazy var minusAlter = MinusEnergyAlterView().then{
+        $0.cancleButton.addTarget(self, action: #selector(onTapCancle), for: .touchUpInside)
+        $0.okButton.addTarget(self, action: #selector(onMOk), for: .touchUpInside)
+    }
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -63,17 +72,53 @@ class LocationViewController: UIViewController {
     }
     
     @objc
+    private func onTapEnergy(){
+        alterView.isHidden = false
+    }
+    
+    @objc
+    private func onTapEOk(){
+        minusAlter.energyTf.text = ""
+        alterView.isHidden = true
+        minusAlter.isHidden = false
+    }
+    
+    @objc
     private func onTapMinus(){
-        pmLabel.text = "-" + pmValue
+        alterView.isHidden = true
+        minusAlter.isHidden = false
+    }
+    
+    @objc
+    private func onTapPlus(){
+        plusAlter.energyTf.text = ""
+        alterView.isHidden = true
+        plusAlter.isHidden = false
+    }
+    
+    @objc
+    private func onMOk(){
+        minusAlter.isHidden = true
+        pmValue = minusAlter.energyTf.text ?? "0"
+        pmLabel.text = "-" + pmValue + "kwh"
         pmLabel.textColor = .rgb(red: 70, green: 150, blue: 225)
         pmLabel.isHidden = false
     }
     
     @objc
-    private func onTapPlus(){
-        pmLabel.text = "+" + pmValue
+    private func onPOk(){
+        plusAlter.isHidden = true
+        pmValue = plusAlter.energyTf.text ?? "0" + "kwh"
+        pmLabel.text = "+" + pmValue + "kwh"
         pmLabel.textColor = .rgb(red: 227, green: 75, blue: 115)
         pmLabel.isHidden = false
+    }
+    
+    @objc
+    private func onTapCancle(){
+        alterView.isHidden = true
+        plusAlter.isHidden = true
+        minusAlter.isHidden = true
     }
     
     //MARK: - Helpers
@@ -103,6 +148,7 @@ class LocationViewController: UIViewController {
         pmLabel.isHidden = true
         alterView.isHidden = true
         plusAlter.isHidden = true
+        minusAlter.isHidden = true
     }
     
     // MARK: - Corner Radius
