@@ -102,8 +102,14 @@ class LocationViewController: UIViewController {
     private func onMOk(){
         minusAlter.isHidden = true
         pmValue = Int(minusAlter.energyTf.text!) ?? 0
-        pmLabel.text = "-" + String(pmValue) + "kwh"
-        pmLabel.textColor = .rgb(red: 70, green: 150, blue: 225)
+        if pmValue > possibleValue {
+            pmValue = 0
+            pmLabel.text = "사용 가능량을 다시 확인해주세요!"
+            pmLabel.textColor = .systemRed
+        } else {
+            pmLabel.text = "-" + String(pmValue) + "kwh"
+            pmLabel.textColor = .rgb(red: 70, green: 150, blue: 225)
+        }
         pmLabel.isHidden = false
         totalEnergy = totalEnergy-pmValue
         allEnergy.text = String(totalEnergy) + "kwh"
